@@ -1,0 +1,12 @@
+table, th, td {
+   border-color: black;
+   text-align: center;
+   border-style: inset;
+   background: grey;
+   }
+
+.abc1 {
+    border-collapse: collapse;
+    background-color: orange;
+    border-style: dotted;
+}
