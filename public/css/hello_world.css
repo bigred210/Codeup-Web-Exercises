@@ -1,0 +1,141 @@
+div.big-guy {
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+
+h1 {
+    color: #FF7272; text-decoration: underline;
+    text-align: center;
+}
+
+
+h2 {
+    color: #00ff7f; text-decoration: underline;
+}
+
+
+em {
+    color: #ff00aa;
+}
+
+
+strong {
+    color: #ffff00;
+}
+
+
+p {
+    color: #f2eddd;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 220px;
+    margin-left: 90px;
+}
+
+
+img.taos {
+    border-radius: 25px;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+
+
+body {
+    font-family: Audiowide;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+
+video {
+    position: fixed;
+    z-index: -1000;
+    top: 0px ;
+    left: 0px ;
+    overflow: hidden;
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+
+ul.lamp {
+    background: url("../img/coding.jpg") no-repeat;
+    width:  28%;
+    color: #FB3640;
+    font-size: 120%;
+    list-style-type: upper-roman;
+    border-style: outset;
+}
+
+
+ul.websites {
+    background: url("../img/icons.jpg") no-repeat;
+    width: 25%;
+    color: #605F5E;
+    list-style-type: square;
+    font-size: 100%;
+    border-style: inset;
+    border-color: #A0BFA5;
+}
+
+
+ol.food {
+    background: url("../img/food.jpg") no-repeat;
+    width:  25%;
+    color: #605F5E;
+    font-size: 120%;
+    list-style-type: upper-roman;
+    border-style: outset;
+}
+
+
+td.dec {
+    color: red;
+}
+
+
+td.hex {
+    color: orange;
+}
+
+
+a:link {
+    color: #ded1c1;
+    text-decoration: none;
+}
+
+
+a:visited {
+    color: blue;
+}
+
+
+a:hover {
+    color: lime;
+    text-decoration: underline;
+}
+
+
+a:active {
+    color: red;
+}
+
+
+table, th, td {
+   border-style: inset;
+   border-color: lime;
+   text-align: center;
+}
+
+
+
+
+
+
