@@ -1,0 +1,143 @@
+/*page background setting*/
+
+html {
+    background: url("../img/heart.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+body {
+    font-family: 'Rock Salt', cursive;
+}
+
+/* general box model settings */
+
+.box {
+    border: 0px ;
+    width: 59px;
+    height: 25px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ac0f10;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* settings for the boxes and their hover  */
+
+#box-broken {
+    background-color: #transparent;
+    margin-left: 67px;
+}
+
+#box-broken:hover {
+    color: #e50c0b;
+}
+
+#box-ripped {
+    background-color: #transparent;
+    margin-left: 335px;
+}
+
+#box-ripped:hover {
+    color: #e50c0b;
+}
+
+#box-destroyed {
+    background-color: #transparent;
+    margin-left: 599px;
+}
+
+#box-destroyed:hover {
+    color: #e50c0b;
+}
+
+#box-bled {
+    background-color: #transparent;
+    margin-left: 460px;
+}
+
+#box-bled:hover {
+    color: #e50c0b;
+}
+
+#box-out {
+    background-color: #transparent;
+    margin-left: 150px;
+}
+
+#box-out:hover {
+    color: #e50c0b;
+}
+
+#box-hallow {
+    background-color: #transparent;
+    margin-left: 382px;
+}
+
+#box-hallow:hover {
+    color: #e50c0b;
+}
+
+#box-empty {
+    background-color: transparent;
+    margin-left: 677px;
+}
+
+#box-epmpty:hover {
+    color: #e50c0b;
+}
+
+#box-shell {
+    background-color: transparent;
+    margin-left: 430px;
+}
+
+#box-shell:hover {
+    color: #e50c0b;
+}
+
+#box-ending {
+    background-color: transparent;
+    margin-left: 160px;
+}
+
+#box-ending:hover {
+    color: #e50c0b;
+}
+
+#box-chapter {
+    background-color: transparent;
+    margin-left: 588px;
+}
+
+#box-chapter:hover {
+    color: #e50c0b;
+}
+
+#box-to {
+    background-color: transparent;
+    margin-left: 270px;
+}
+
+#box-to:hover {
+    color: #e50c0b;
+}
+
+#box-begin {
+    background-color: transparent;
+    margin-left: 20px;
+}
+
+.quote { 
+display: none;
+}
+
+#box-begin:hover .quote {
+display : block;
+width: 630px;
+height: 25px;
+}
+
+
+
