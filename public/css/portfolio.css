@@ -1,0 +1,18 @@
+/*_____body_____*/
+
+body {
+    background-color: black;
+}
+
+
+/*_____navbar_____*/
+
+#my-navbar{
+    text-align: center;
+}
+
+/*_____landing/home_____*/
+
+.landing {
+    background: url("../img/slate..jpg");
+}
