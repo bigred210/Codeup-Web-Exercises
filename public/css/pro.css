@@ -32,6 +32,12 @@ video {
 
 /* _____ navbar _____*/
 
+.navbar {
+    padding-left: 380px;
+    background: transparent;
+    padding-top: 80px;
+}
+
 .nav>li {
     text-align: center;
 }
