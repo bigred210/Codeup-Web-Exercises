@@ -42,7 +42,6 @@ video {
 }
 
 
-
 /*  motto  */
 
 .jumbotron {
@@ -50,7 +49,7 @@ video {
     height: 550px;
     width: 100%; 
     color: white; 
-    padding-right: 0px; 
+    padding-right: 30px; 
     margin: 0;
 }
 
