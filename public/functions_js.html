@@ -24,7 +24,7 @@
             function sayHello(myNameIs) {
                 console.log(" Hello from " + myNameIs + " ! ");
             }
-            sayHello("myNameIs");
+            sayHello(myNameIs);
 
             
             // do not worry about the details of this line
@@ -36,10 +36,9 @@
             // The function should use the ternary operator to log a message.
             // The log should tell the number passed in and whether it is odd or not.
 
-            function isOdd(random) {
-                var message = ((random % 2 == 1) ? " this is and odd number " : " this is an even number " );
-                console.log(random);
-                console.log(message);
+            function isOdd(numb) {
+                var message = ((numb % 2 == 1) ? " this is and odd number " : " this is an even number " );
+                console.log(numb , message);    
             }
             
             // todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
