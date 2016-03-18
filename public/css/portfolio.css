@@ -2,9 +2,14 @@
 
 /* NAVBAR */
 
-ul>img {
-    width: 30%;
-    height: 30%;
+.navbar {
+    background: transparent;
+    border-style: none;
+}
+
+.img-circle {
+    width: 90px;
+    height: 8s0px;
 }
 
 
@@ -23,7 +28,7 @@ video {
 }
 
 .main {
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 .name {
