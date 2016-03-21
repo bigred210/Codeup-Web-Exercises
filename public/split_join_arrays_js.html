@@ -2,8 +2,47 @@
  <html>
     <head>
         <title>SPLIT/JOIN ARRAYS</title>
+        <style>
+            body {
+                background-color: black;
+            }
+
+            h1   {
+                color: lime;
+                text-align: center;
+            }
+
+            p {
+                color: white;
+                text-align: left;
+                text-decoration: bold;
+                padding-left: 525px;
+            }
+
+        </style>
     </head>
     <body>
+        <h1>MY FAVORITE MOVIES</h1>
+
+
+        <p>1. WAT!?</p>
+        <p>2. Ben's 5th Birthday</p>
+        <p>3. Isaac's : How to color within the lines</p>
+        <p>4. Ben's : Let's get weird with Coding</p>
+        <p>5. Isaac's 8th grade rap battle</p>
+        <p>6. Cam's : Beard growth gif</p>
+        <p>7. Ben and Isaac : Coding with puppets</p> 
+        <p>8. Cam's : How to groom a beard</p>
+        <p>9. Isaac and Ben : Karaoke coding madness</p>
+        <p>10. The ABC Rule : Always Be Coding</p>
+    
+
+
+
+
+
+
+
         <script>
         (function() {
 
@@ -19,10 +58,140 @@
             console.log(planetsAsString);
 
             // todo: Split the 'planetsAsString' variable by pipes (|) to create a variable named 'planetsAsArray'.
-            var planetsAsArray = planets.join('|');
+            var planetsAsArray = planetsAsString.split('|');
             console.log(planetsAsArray);
 
-        })();
+
+
+            var favoriteMovies = [ 
+            "WAT!?" , 
+            "Ben's 5th Birthday" , 
+            "Isaac's : How to color within the lines" , 
+            "Ben's : Let's get weird with Coding" , 
+            "Isaac's 8th grade rap battle" , 
+            "Cam's : Beard growth gif" , 
+            "Ben and Isaac : Coding with puppets" , 
+            "Cam's : How to groom a beard" , 
+            "Isaac and Ben : Karaoke coding madness" , 
+            "The ABC Rule : Always Be Coding"];
+
+            // Sort your favorite movies alphabetically
+            favoriteMovies.sort();
+            console.log(favoriteMovies);
+
+            // Use .indexOf() to find your number one favorite movie
+            var index = favoriteMovies.indexOf("The ABC Rule : Always Be Coding");
+            console.log(index);
+            // Use .splice() to take that movie out of the array
+            var removed = favoriteMovies.splice(8,1);
+            console.log(removed);
+            // Put your favorite movie back in at the start of the array
+            favoriteMovies.splice(favoriteMovies.indexOf('0') + 1, 0, "The ABC Rule : Always Be Coding")
+            console.log(favoriteMovies);
+            // Repeat the above steps for your least favorite movie; put it at the end
+            var index = favoriteMovies.indexOf("Cam's : beard growth gif");
+            console.log(index);
+            var removed = favoriteMovies.splice(4,1);
+            console.log(removed);
+            favoriteMovies.splice(favoriteMovies.indexOf('0') + 10, 0, "Cam's : beard growth gif");
+            console.log(favoriteMovies);   
+            // Create a function to console.log() your favorite movies.
+                // DO NOT VIOLATE SCOPE! Pass your favoriteMovies array in as a parameter
+                // Your function should output:
+                // "My all time favorite movie is [your favorite movie here]"
+                // "My least favorite movie is [your least favorite movie here]"
+                // "Some other movies are [the rest of the movies array with comma space between them]"
+                // You should not output any movies twice.
+
+            
+            favoriteMovies.forEach(function (element, index, array) {
+            
+            if (index == "0") {
+                console.log ("My all time favorite movie is : " + element)
+            } else if ( index == "9") {
+                console.log ("My least favorite movie is : " + element)
+            } 
+
+            });
+
+            var others = ["Ben and Isaac : Coding with puppets", "Ben's 5th Birthday", "Ben's : Let's get weird with Coding", "Cam's : How to groom a beard", "Isaac and Ben : Karaoke coding madness", "Isaac's 8th grade rap battle", "Isaac's : How to color within the lines", "WAT!?"];
+
+            console.log("Some other movies are : "  + others)
+
+        
+
+       
+
+
+            var favoriteMovies = [
+              "WAT!?",
+              "Ben's 5th Birthday",
+              "Isaac's : How to color within the lines",
+              "Ben's : Let's get weird with Coding",
+              "Isaac's 8th grade rap battle",
+              "Cam's Beard growth gif",
+              "Ben and Isaac : Coding with puppets",
+              "Cam's : How to groom a beard",
+              "Isaac and Ben : Karaoke coding madness",
+              "The ABC Rule : Always Be Coding"
+            ];
+
+            // Sort your favorite movies alphabetically
+            favoriteMovies.sort();
+            console.log(favoriteMovies);
+
+            // Use .indexOf() to find your number one favorite movie
+            var index = favoriteMovies.indexOf("The ABC Rule : Always Be Coding");
+            console.log(index);
+            // Use .splice() to take that movie out of the array
+            var removed = favoriteMovies.splice(8, 1);
+            console.log(removed);
+            // Put your favorite movie back in at the start of the array
+            favoriteMovies.splice(favoriteMovies.indexOf('0') + 1, 0, "The ABC Rule : Always Be Coding")
+            console.log(favoriteMovies);
+            // Repeat the above steps for your least favorite movie; put it at the end
+            var index = favoriteMovies.indexOf("Cam's : beard growth gif");
+            console.log(index);
+            var removed = favoriteMovies.splice(4, 1);
+            console.log(removed);
+            favoriteMovies.splice(favoriteMovies.indexOf('0') + 10, 0, "Cam's : beard growth gif");
+            console.log(favoriteMovies);
+            // Create a function to console.log() your favorite movies.
+            // DO NOT VIOLATE SCOPE! Pass your favoriteMovies array in as a parameter
+            // Your function should output:
+            // "My all time favorite movie is [your favorite movie here]"
+            // "My least favorite movie is [your least favorite movie here]"
+            // "Some other movies are [the rest of the movies array with comma space between them]"
+            // You should not output any movies twice.
+            function logMovies(array){
+              var others = [];
+
+              array.forEach(function(element, index, array) {
+
+                if (index == "0") {
+                  console.log("My all time favorite movie is : " + element)
+                } else if (index == "9") {
+                  console.log("My least favorite movie is : " + element)
+                } else {
+                  others.push(element);
+                }
+
+              });
+
+              console.log("Some other movies are : " + others)
+            //closes function
+            }
+
+            //function call
+            logMovies(favoriteMovies);
+    
+            
+        
+
+
+
+
+            })();
         </script>
     </body>
  </html>
