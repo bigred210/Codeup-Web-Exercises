@@ -1,0 +1,41 @@
+/* input */
+
+input {
+    width: 325px;
+    height: 25px;
+    text-align: right;
+    border-radius: 2px;
+}
+
+
+
+/* buttons */
+
+button {
+    padding-bottom:  11px;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    text-decoration: bold;
+    font-size: 20px
+}
+
+.op {
+    background-color: white;
+    border-radius: 2px;
+    border: 2px solid black;
+}
+
+.op:hover {
+    background-color: #FF9999;
+}
+
+.num {
+    background-color: white;
+    border-radius: 2px;
+    border: 2px solid black;
+}
+
+.num:hover {
+    background-color: lime;
+}
