@@ -18,7 +18,7 @@
             <input id="right_operand" value="">
         </div>
         <div>
-            <input id="result" value="">
+            <input id="output" value="">
         </div>
 
 
@@ -68,21 +68,27 @@
 
                 // create boolean so calc knows to switch leftinput --> rightinput
 
-            var left_operand = true;
+            var operator_clicked = false;
 
                 //  create getElementById for inputs
 
             var left_operand = document.getElementById("left_operand");
             var middle_operator= document.getElementById("middle_operator");
             var right_operand = document.getElementById("right_operand");
-            var result = document.getElementById("result"); 
+            var output = document.getElementById("output"); 
         
             
                 // listener for left input (numbers)
 
             function numListener() {
                 var input = this.getAttribute('data-value');
-                left_operand.value += input;
+
+                if (operator_clicked == false) {
+                    left_operand.value += input;
+                }
+                else {
+                    right_operand.value += input;
+                }
             }
             
             var numBtn = document.getElementsByClassName("num")
@@ -97,40 +103,43 @@
             function opListener() {
                 var input = this.getAttribute('data-value');
                 middle_operator.value = input;
-                console.log(left_operand);
+                operator_clicked = true;
             }
             
             var opBtn = document.getElementsByClassName("op")
 
             for (var i = 0; i < opBtn.length; i++) {
                 opBtn[i].addEventListener("click", opListener);
-                }
-
-
-                // listener for right input (numbers)
-
-            function numListener2() {
-                var input = this.getAttribute('data-value');
-                right_operand.value += input;
             }
-            
-            var numBtn = document.getElementsByClassName("num")
 
-            for (var i = 0; i < numBtn.length; i++) {
-                numBtn[i].addEventListener("click", numListener2);
-            };
+
+
+            var total = document.getElementById("output")
+            var result = function (event) {
+                switch (middle_operator.value) {
+                    case "+":
+                        output.value = (parseInt(left_operand.value)) + (parseInt(right_operand.value));
+                            break;
+                   case "-":
+                        output.value = (parseInt(left_operand.value)) - (parseInt(right_operand.value));
+                            break;
+                   case "*":
+                        output.value = (parseInt(left_operand.value)) * (parseInt(right_operand.value));
+                            break;
+                   case "/":
+                        output.value = (parseInt(left_operand.value)) / (parseInt(right_operand.value));
+                            break;
+                    }
+
+            }
+
+            var equals = document.getElementById("btnEval");
+            equals.addEventListener("click", result);
+            
+
+
+
                 
-
-            
-
-
-
-
-            
-
-
-            
-
     })();
 </script>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
