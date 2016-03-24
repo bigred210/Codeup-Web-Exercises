@@ -3,58 +3,194 @@
 <head>
     <meta charset="utf-8">
     <title>Calculator</title>
+    
     <link rel="stylesheet" href="css/cal.css">
 </head>
 <body>
 
-    <div>
-        <input type="text">
-    </div>
+    <div class="container">
 
-    <div>
-        <button id="btnC" class="op">C</button>
-        <button id="btn/" class="op">/</button>
-        <button id="btn*" class="op">*</button>
-        <button id="btnBk" class="op">Bck</button>
-    </div>
-    <div>
-        <button id="btn7" class="num">7</button>
-        <button id="btn8" class="num">8</button>
-        <button id="btn9" class="num">9</button>
-        <button id="btn-" class="op">-</button>
-    </div>
-    <div>
-        <button id="btn4" class="num">4</button>
-        <button id="btn5" class="num">5</button>
-        <button id="btn6" class="num">6</button>
-        <button id="btn+" class="op">+</button>
-    </div>
-    <div>
-        <button id="btn1" class="num">1</button>
-        <button id="btn2" class="num">2</button>
-        <button id="btn3" class="num">3</button>
-        <button id="btn()" class="op">()</button>
-    </div>
-    <div>
-        <button id="btn0" class="num">0</button>
-        <button id="btn." class="op">.</button>
-        <button id="btn+-" class="op">+/-</button>
-        <button id="btn=" class="op">=</button>
-    </div>
+        <div>
+            <input id="left_operand" value="">
+       
+            <input id="middle_operator" value="">
+        
+            <input id="right_operand" value="">
+        </div>
+        <div>
+            <input id="result" value="">
+        </div>
 
 
 
+        <div class="calBg">
+
+            <div>
+                <button id="btnClr" class="" data-value= "C">C</button>
+                <button id="btnDivi" class="op" data-value= "/">/</button>
+                <button id="btnMult" class="op" data-value= "*">*</button>
+                <button id="btnBck" class="" data-value= "Bck">Bck</button>
+            </div>
+            <div>
+                <button id="btn7" class="num" data-value= "7">7</button>
+                <button id="btn8" class="num" data-value= "8">8</button>
+                <button id="btn9" class="num" data-value= "9">9</button>
+                <button id="btnMin" class="op" data-value= "-">-</button>
+            </div>
+            <div>
+                <button id="btn4" class="num" data-value= "4">4</button>
+                <button id="btn5" class="num" data-value= "5">5</button>
+                <button id="btn6" class="num" data-value= "6">6</button>
+                <button id="btnAdd" class="op" data-value= "+">+</button>
+            </div>
+            <div>
+                <button id="btn1" class="num" data-value= "1">1</button>
+                <button id="btn2" class="num" data-value= "2">2</button>
+                <button id="btn3" class="num" data-value= "3">3</button>
+                <button id="btnPara" class="" data-value= "()">( )</button>
+            </div>
+            <div>
+                <button id="btn0" class="num" data-value= "0">0</button>
+                <button id="btnDeci" class="" data-value= ".">.</button>
+                <button id="btnPoNe" class="" data-value= "+/-">+/-</button>
+                <button id="btnEval" class="" data-value= "=">=</button>
+            </div>
+
+        </div> <!-- calBg end -->
+
+    </div> <!-- container end -->
 
 
 <script>
     (function() {
 
     "use strict";
-            
+
+                // create boolean so calc knows to switch leftinput --> rightinput
+
+            var left_operand = true;
+
+                //  create getElementById for inputs
+
+            var left_operand = document.getElementById("left_operand");
+            var middle_operator= document.getElementById("middle_operator");
+            var right_operand = document.getElementById("right_operand");
+            var result = document.getElementById("result"); 
         
+            
+                // listener for left input (numbers)
+
+            function numListener() {
+                var input = this.getAttribute('data-value');
+                left_operand.value += input;
+            }
+            
+            var numBtn = document.getElementsByClassName("num")
+
+            for (var i = 0; i < numBtn.length; i++) {
+                numBtn[i].addEventListener("click", numListener);
+            };
+
+
+                // listener for middle input (operators)
+
+            function opListener() {
+                var input = this.getAttribute('data-value');
+                middle_operator.value = input;
+                console.log(left_operand);
+            }
+            
+            var opBtn = document.getElementsByClassName("op")
+
+            for (var i = 0; i < opBtn.length; i++) {
+                opBtn[i].addEventListener("click", opListener);
+
+                if (!true) {
+                    var input = this.getAttribute('data-value');
+                    right_operand.value += input;
+                }
+            };
+
+
+                // listener for right input (numbers)
+
+            function numListener2() {
+                var input = this.getAttribute('data-value');
+                right_operand.value += input;
+            }
+            
+
+            var numBtn = document.getElementsByClassName("num")
+
+            for (var i = 0; i < numBtn.length; i++) {
+                numBtn[i].addEventListener("click", numListener2);
+            };
+                
+
+            
+
+
+
+
+            // switch(i) {
+            //     case 1:
+            //         result=a+b;
+            //         break;
+
+            //     case 2:
+            //         result=a-b;
+            //         break;
+
+            //     case 3:
+            //         result=a*b;
+            //         break;
+
+            //     case 4:
+            //         if(b==0) {
+            //             System.out.println("DIVISION NOT POSSIBLE");
+            //             break;
+            //         }
+            //         else
+            //             result=a/b;
+                
+            //     default:
+            //         System.out.println("YOU HAVE ENTERED A WRONG CHOICE");
+            // }
+           
+            // result = result;
+    
+
+
+
+            // btnClr.addEventListener('click', buttonClick);
+            // btnDivi.addEventListener('click', buttonClick);
+            // btnMult.addEventListener('click', buttonClick);
+            // btnBck.addEventListener('click', buttonClick);
+            // btn7.addEventListener('click', buttonClick);
+            // btn8.addEventListener('click', buttonClick);
+            // btn9.addEventListener('click', buttonClick);
+            // btnMin.addEventListener('click', buttonClick);
+            // btn4.addEventListener('click', buttonClick);
+            // btn5.addEventListener('click', buttonClick);
+            // btn6.addEventListener('click', buttonClick);
+            // btnAdd.addEventListener('click', buttonClick);
+            // btn1.addEventListener('click', buttonClick);
+            // btn2.addEventListener('click', buttonClick);
+            // btn3.addEventListener('click', buttonClick);
+            // btnPara.addEventListener('click', buttonClick);
+            // btn0.addEventListener('click', buttonClick);
+            // btnDeci.addEventListener('click', buttonClick);
+            // btnPoNe.addEventListener('click', buttonClick);
+            // btnEval.addEventListener('click', buttonClick);
+
+
+
+
             
 
     })();
 </script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>
