@@ -11,14 +11,14 @@
     <div class="container">
 
         <div>
-            <input id="left_operand" value="">
+            <input id="left_operand" value="" readonly>
        
-            <input id="middle_operator" value="">
+            <input id="middle_operator" value="" readonly>
         
-            <input id="right_operand" value="">
+            <input id="right_operand" value="" readonly>
         </div>
         <div>
-            <input id="output" value="">
+            <input id="output" value="" readonly>
         </div>
 
 
@@ -60,13 +60,15 @@
 
     </div> <!-- container end -->
 
+            <div id="matrixGif" style="display: none;">
 
+            </div>
 <script>
     (function() {
 
     "use strict";
 
-                // create boolean so calc knows to switch leftinput --> rightinput
+                // create boolean for operator
 
             var operator_clicked = false;
 
@@ -112,7 +114,7 @@
                 opBtn[i].addEventListener("click", opListener);
             }
 
-
+                // switch for op value
 
             var total = document.getElementById("output")
             var result = function (event) {
@@ -131,15 +133,59 @@
                             break;
                     }
 
+                    operator_clicked = false;
             }
+
+               
+
+
+
 
             var equals = document.getElementById("btnEval");
             equals.addEventListener("click", result);
-            
+             equals.addEventListener("click", function() {
+                 result();
+                 var gif = document.getElementById("matrixGif")
+                 gif.style.display = 'block';
+                 var delay = 10000; 
+                 var timeoutId = setTimeout(function () {
+                 gif.style.display = 'none';
+                 }, delay);
+             });
 
 
 
-                
+
+            function clear() {
+                left_operand.value = "";
+                middle_operator.value = "";
+                right_operand.value = "";
+                output.value = "";
+
+                operator_clicked = false;
+            }
+
+            var btnClr = document.getElementById("btnClr");
+            btnClr.addEventListener("click", clear);
+
+
+
+
+
+            function bckSp() {
+                if(operator_clicked == false) {
+                    left_operand.value = left_operand.value.substr(0, left_operand.value.length - 1);
+                }
+                else {
+                    right_operand.value = right_operand.value.substr(0, right_operand.value.length - 1);
+                }
+            }
+
+            var btnBck = document.getElementById("btnBck");
+            btnBck.addEventListener("click", bckSp)
+
+
+                       
     })();
 </script>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
