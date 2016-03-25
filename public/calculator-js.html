@@ -9,6 +9,13 @@
 <body>
 
     <div class="container">
+        
+
+        <div id="matrixGif" style="display: none;">
+            
+        </div>
+
+
 
         <div>
             <input id="left_operand" value="" readonly>
@@ -25,11 +32,12 @@
 
         <div class="calBg">
 
+
             <div>
-                <button id="btnClr" class="" data-value= "C">C</button>
+                <button id="btnClr" class="int" data-value= "C">C</button>
                 <button id="btnDivi" class="op" data-value= "/">/</button>
                 <button id="btnMult" class="op" data-value= "*">*</button>
-                <button id="btnBck" class="" data-value= "Bck">Bck</button>
+                <button id="btnBck" class="int" data-value= "Bck">Bck</button>
             </div>
             <div>
                 <button id="btn7" class="num" data-value= "7">7</button>
@@ -47,22 +55,20 @@
                 <button id="btn1" class="num" data-value= "1">1</button>
                 <button id="btn2" class="num" data-value= "2">2</button>
                 <button id="btn3" class="num" data-value= "3">3</button>
-                <button id="btnPara" class="" data-value= "()">( )</button>
+                <button id="btnPow" class="int" data-value= "^">^</button>
             </div>
             <div>
                 <button id="btn0" class="num" data-value= "0">0</button>
-                <button id="btnDeci" class="" data-value= ".">.</button>
-                <button id="btnPoNe" class="" data-value= "+/-">+/-</button>
-                <button id="btnEval" class="" data-value= "=">=</button>
+                <button id="btnDeci" class="int" data-value= ".">.</button>
+                <button id="btnSqr" class="int" data-value= "√">√</button>
+                <button id="btnEval" class="int" data-value= "=">=</button>
             </div>
 
         </div> <!-- calBg end -->
 
     </div> <!-- container end -->
 
-            <div id="matrixGif" style="display: none;">
-
-            </div>
+            
 <script>
     (function() {
 
@@ -122,16 +128,23 @@
                     case "+":
                         output.value = (parseInt(left_operand.value)) + (parseInt(right_operand.value));
                             break;
-                   case "-":
+                    case "-":
                         output.value = (parseInt(left_operand.value)) - (parseInt(right_operand.value));
                             break;
-                   case "*":
+                    case "*":
                         output.value = (parseInt(left_operand.value)) * (parseInt(right_operand.value));
                             break;
-                   case "/":
+                    case "/":
                         output.value = (parseInt(left_operand.value)) / (parseInt(right_operand.value));
                             break;
+                    case '^':
+                         document.getElementById('btnPow').value = Math.pow(left_operand,right_operand);
+                            break;
+                    case '√':
+                        document.getElementById('btnSqr').value = Math.sqrt(left_operand);
+                            break;
                     }
+
 
                     operator_clicked = false;
             }
@@ -143,11 +156,11 @@
 
             var equals = document.getElementById("btnEval");
             equals.addEventListener("click", result);
-             equals.addEventListener("click", function() {
+            equals.addEventListener("click", function() {
                  result();
                  var gif = document.getElementById("matrixGif")
                  gif.style.display = 'block';
-                 var delay = 10000; 
+                 var delay = 1100; 
                  var timeoutId = setTimeout(function () {
                  gif.style.display = 'none';
                  }, delay);
