@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        
+        body {
+            background-color: black;
+        }
+
+        #map-canvas {
+            width: 700px;
+            height: 500px;
+            margin-left: 300px;
+            margin-top: 125px;
+        }
+
+        .controls {
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 32px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+        #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+        }
+
+        #type-selector label {
+            font-size: 13px;
+            font-weight: 300;
+        }
+        #target {
+            width: 345px;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+
+    <!-- search box for map -->
+    <input id="pac-input" class="controls" type="text" placeholder="Where is your Favorite Restaurant?">
+
+    <!-- div to hold map -->
+    <div id="map-canvas"></div>
+
+
+<!--    _________________     -->
+
+
+    <!-- Script to Load the Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVA8GE8m5qdHumyaoYLjRG1e0N_qIn3Co&libraries=places"></script>
+
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+    (function() {
+        "use strict";
+
+        // Set our map options
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 15,
+
+            // This sets the center of the map at our location
+            center: {
+                lat : 29.430581 , 
+                lng : -98.488705
+            }
+        };
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        var trafficLayer = new google.maps.TrafficLayer();
+            trafficLayer.setMap(map);
+
+
+
+// ------------------
+
+        // Custom marker for BigReds
+
+        var bigReds = '/img/foodtruck.png';
+        var BigRedMark = new google.maps.Marker({
+            position: { lat:  29.4280959, 
+                        lng : -98.48921999999999
+                      },
+            animation: google.maps.Animation.DROP,
+            map: map,
+            icon: bigReds
+        });
+
+        // Info window about BigReds
+
+        var contentString = '<div id="content" style ="background: #FFFFCC; color: #996633; font-size: 13px; text-align: center;">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading" style ="color: red;">BigReds</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b style ="color: red;">BigReds</b>, also referred to as <b style ="color: red;">GiganteRojos</b>, '+
+            'is a local food truck in the growing tech community of San Antonio, Texas. '+
+            'They serve a variety of food and have been labled best in quality by Google reviews '+
+            '3 times since first appearing on the scene in 2010!'+
+            '</p>'+
+            '<img src="/img/food2.jpg" height="100"><img src="/img/food9.jpg" height="100"><img src="/img/food10.jpg" height="100"><img src="/img/food5.jpg" height="100"><img src="/img/food11.jpg" height="100">'
+            '</div>';
+
+        var BigRedInfoWindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+            BigRedMark.addListener('click', function() {
+            BigRedInfoWindow.open(map, BigRedMark);
+            });
+
+        
+// ------------------
+
+        // Custom marker for FogoDeChao
+
+        var fogoMark = '/img/fogo.png';
+        var Fogo = new google.maps.Marker({
+            position: { lat : 29.424185, 
+                        lng : -98.485167   
+                      },
+            animation: google.maps.Animation.DROP,
+            map: map,
+            icon: fogoMark
+        });
+
+        // Info window about FogoDeChao
+
+        contentString = '<div id="content" style ="background: #FFFFCC; color: #996633; font-size: 13px; text-align: center;">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading" style ="color: red;">Fogo De Chao</h1>'+
+              '<div id="bodyContent">'+
+              '<p><b>FOGO DE CHAO</b>, '+
+              'We are the best Brazillian Steak House inSan Antonio, Texas. '+
+              'We serve a variety of Steaks and have been voted best in quality by Google reviews '+
+              '3 times since first appearing on the scene in 2010!'+
+              '</p>'+
+              '<img src="/img/fogo2.jpg" height="100"><img src="/img/fogo1.jpg" height="100">'
+              '</div>';
+
+        var fogoInfoWindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+        Fogo.addListener('click', function() {
+            fogoInfoWindow.open(map, Fogo);
+          });
+     
+
+//-----------------
+
+        // Custom marker for Guillermos
+
+        var guillMark = '/img/guills3.jpg';
+        var Guills = new google.maps.Marker({
+            position: { lat : 29.434122, 
+                        lng : -98.48754600000001  
+                      },
+            animation: google.maps.Animation.DROP,
+            map: map,
+            icon: guillMark
+        });
+
+        // Info window aboutGuillermos
+
+        contentString = '<div id="content" style ="background: #FFFFCC; color: #996633; font-size: 13px; text-align: center;">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading" style ="color: red;">Guillermos</h1>'+
+              '<div id="bodyContent">'+
+              '<p><b>Guillermos</b>, '+
+              'We are the best Deli House in San Antonio, Texas. '+
+              'We serve a variety of Deliciousness and have been voted best in quality by Google reviews '+
+              '3 times since first appearing on the scene in 2010!'+
+              '</p>'+
+              '<img src="/img/guills.jpg" height="100"><img src="/img/guills2.jpg" height="100">'
+              '</div>';
+
+        var GuillInfoWindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+        Guills.addListener('click', function() {
+            GuillInfoWindow.open(map, Guills);
+          });
+
+
+//_________________
+
+
+        function initAutocomplete() {
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+      initAutocomplete();
+
+
+    })();
+    </script>
+</body>
