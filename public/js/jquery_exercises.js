@@ -13,10 +13,11 @@ $(document).ready(function(){
 
    
     $('li').css('font-size','40px');
-
     $('h1').css('background-color','yellow');
     $('p').css('background-color','yellow');
     $('li').css('background-color','yellow');
+
+    $('*').css('border', '1px solid grey');
 
 
 
