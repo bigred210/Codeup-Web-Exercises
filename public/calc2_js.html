@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+ <html>
+<head>
+    <title>Calc2</title>
+</head>
+<body>
+  
+    <div class="container">
+        <div class="topSpace">
+            <p id="calcName">CALC-O-MATIC 9001</p>
+        </div>
+        <span class="answerField">
+        <form id="form1">
+            <input id="answer" type="text" readonly>
+        </form>
+        </span>
+
+        <span class="inputField">
+        <form id="form2">
+            <input id="leftField" type="text" readonly>
+            <input id="midField" type="text" readonly>
+            <input id="rightField" type="text" readonly>
+        </form>
+        </span>
+
+        <br>
+
+        <span class="rowOne">
+            <button class="number" id="btn1" data-number='1' type="text">1</button>
+            <button class="number" id="btn2" data-number="2" type="text">2</button>
+            <button class="number" id="btn3" data-number="3" type="text">3</button>
+            <button class="operator" id="btnPlus" data-operator="+"  type="text">+</button>
+        </span>
+
+        <br>
+
+        <span class="rowTwo">
+            <button class="number" id="btn4" data-number="4" type="text">4</button>
+            <button class="number" id="btn5" data-number="5" type="text">5</button>
+            <button class="number" id="btn6" data-number="6" type="text">6</button>
+            <button class="operator" id="btnMinus" data-operator="-"  type="text">-</button>
+        </span>
+
+        <br>
+
+        <span class="rowThree">
+            <button class="number" id="btn7" data-number="7" type="text">7</button>
+            <button class="number" id="btn8" data-number="8" type="text">8</button>
+            <button class="number" id="btn9" data-number="9" type="text">9</button>
+            <button class="operator" id="btnTimes" data-operator="x" type="text">x</button>
+        </span>
+
+        <br>
+
+        <span class="rowFour">
+            <button class="clear" id="btnClearAll" onclick="clearFields" data-clear="" type="text">CA</button>
+            <button class="clear" id="btnClear" onclick="clearAll" data-clear="" type="text">C</button>
+            <button class="number" id="btn0" data-number="0" type="text">0</button>
+            <button class="equals" id="btnEquals" data-equals="=" type="text">=</button>
+            <button class="operator" id="btnDivide" data-operator="/" type="text">/</button>
+        </span>
+        
+        <br>
+
+        <span class="rowFive">
+            <button class="operator" id="btnDecimal" data-decimal="." type="text">.</button>
+            <button class="operator" id="btnPower"  data-operator="^" type="text">^</button>
+            <button class="operator" id="btnPercent" data-operator="%" type="text">%</button>
+            <button class="operator" id="btnSign" data-operator="+/-" type="text">+/-</button>
+            <button class="converter" id="btnBinary" data-converter="01" type="text">01</button>
+            <button class="converter" id="btnHex" data-converter="#" type="text">#</button>
+        </span>
+    </div>
+
+    
+<script>
+    (function() {
+    "use strict";
+        
+                'use strict';
+        var inputLeft = document.getElementById('leftField');
+        var inputMiddle = document.getElementById('midField');
+        var inputRight = document.getElementById('rightField');
+        var inputAnswer = document.getElementById('answer');
+        var activeScreen;
+        var middleScreen = inputMiddle;
+        
+        var leftArray = [];
+        var middleArray = [];
+        var rightArray = [];
+        var answerArray = [];
+        var storeAnswer = [];
+        var decimalLeft = [];
+        var decimalRight = [];
+        var numberButtons = document.getElementsByClassName('number');
+        var operatorButtons = document.getElementsByClassName('operator');
+        var converterButtons = document.getElementsByClassName('converter');
+        var clearButton = document.getElementsByClassName('clear');
+        var operatorButtons = document.getElementsByClassName('operator');
+        
+        var equals = document.getElementById('btnEquals');
+        var x;
+        var y1;
+        var y2;
+        var clear = document.getElementById('btnClear');
+        var converterButtons = document.getElementsByClassName('converter');
+        var hex = document.getElementById('btnHex');
+        var binary = document.getElementById('btnBinary');
+        function addToScreen(event) {
+            if (middleArray.length < 1) {
+                activeScreen = inputLeft;
+                if(this.getAttribute('data-decimal')) {
+                    decimalLeft.push('.');
+                    if (decimalLeft.length <= 1){
+                        inputLeft.value += this.getAttribute('data-decimal');
+                    }   
+                }
+            }
+            else if (middleArray.length >= 1) {
+                activeScreen = inputRight;
+                if(this.getAttribute('data-decimal')) {
+                    decimalRight.push('.');
+                    if (decimalRight.length <= 1){
+                        inputRight.value += this.getAttribute('data-decimal');
+                    }   
+                }
+            }
+            if (this.getAttribute('data-number')) {
+                activeScreen.value += this.getAttribute('data-number');
+            } else if (this.getAttribute('data-operator')) {
+                middleScreen.value += this.getAttribute('data-operator');
+                middleArray.push(this.getAttribute('data-operator'));
+                    if (middleArray.length > 1) {
+                        middleScreen.value = this.getAttribute('data-operator');
+                    }
+            } else if (this.getAttribute('data-converter')) {
+                middleScreen.value += this.getAttribute('data-converter');
+                    if (middleArray.length >= 1) {
+                        middleScreen.value = this.getAttribute('data-operator');
+                    }
+            }
+            if(this.getAttribute('data-decimal')) {
+                .value += this.getAttribute('data-decimal');
+                y += 1;
+                decimal.push(y1);
+                if (decimalLeft.length >= 1) {
+                    decimalLeft.value = 1;
+                }
+             }
+        }
+        function doMath(event) {
+            if(this.getAttribute('data-equals')) {
+                if (middleScreen.value === '+') {
+                    x = (Number(inputLeft.value) + Number(inputRight.value));
+                } else if (middleScreen.value === '-') {
+                    x = inputLeft.value - inputRight.value;
+                } else if (middleScreen.value === 'x') {
+                    x = inputLeft.value * inputRight.value;
+                } else if (middleScreen.value === '/') {
+                    x = inputLeft.value / inputRight.value;
+                } else if (middleScreen.value === '^') {
+                    x = Math.pow(inputLeft.value, inputRight.value);
+                } else if (middleScreen.value === '%') {
+                    x = inputLeft.value / 100;
+                } else if (middleScreen.value === '+/-') {
+                    x = inputLeft.value * -1;
+                }
+                storeAnswer = [];
+            }
+            if (middleArray.length < 1) {
+                alert('Enter an operator first');
+                inputAnswer.value = '';
+            }
+            inputAnswer.value = '';
+            inputAnswer.value += x;
+        }
+        function clearAll(event) {
+            location.reload();
+        }
+        function clearFields(event) {
+                document.getElementById("form1").reset();
+                document.getElementById("form2").reset();
+                middleArray = [];
+                storeAnswer.push(x);
+                inputLeft.value = storeAnswer[0];
+        }
+        for (var i = 0; i < numberButtons.length; i++) {
+            numberButtons[i].addEventListener("click", addToScreen);
+        }
+        for (var j = 0; j < operatorButtons.length; j++) {
+            operatorButtons[j].addEventListener("click", addToScreen);
+        }
+        for (var k = 0; k < converterButtons.length; k++) {
+            converterButtons[k].addEventListener("click", addToScreen);
+        }
+        btnEquals.addEventListener('click', doMath);
+        btnClear.addEventListener('click', clearFields);
+        btnClearAll.addEventListener('click', clearAll);
+
+            
+
+    })();
+</script>
+</body>
+</html>
