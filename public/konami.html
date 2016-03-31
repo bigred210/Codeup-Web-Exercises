@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+    <style type="text/css">
+
+    body {
+        background: black;
+    }
+
+    h1 {
+        text-align: center;`
+        font-size: 50px;
+        color: orange;
+    }
+
+    #secret_modal {
+        height: 720px;
+        width: 1280px;
+        border-radius: 10px;
+    }
+
+    </style>
+</head>
+<body>
+    <h1 class="page">Konami Code</h1>
+    <div id="secret_video" style="display: none;">
+        <video preload="auto" id="video">
+            <source src="../img/dbz.mp4" type="video/mp4" >
+        </video>
+    </div>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"> </script>
+<script>
+  
+    "use strict";
+
+    // $(document).keyup(function(event){
+    //     console.log(event.keyCode);
+    // });
+  
+
+
+
+
+$(document).ready(function(){
+
+    var keys    = [];
+
+    var konami  = '38,38,40,40,37,39,37,39,66,65';
+ 
+   $(document).keydown(function(e) {
+       
+        keys.push( e.keyCode );
+            
+            if ( keys.toString().indexOf( konami ) >= 0 ){
+
+                alert("you got it")
+                $("#secret_video").show();
+                $('#video')[0].play();
+
+                keys = [];
+            } 
+    
+    }); 
+});      
+
+
+ 
+
+
+
+
+</script>
+</body>
+</html>
