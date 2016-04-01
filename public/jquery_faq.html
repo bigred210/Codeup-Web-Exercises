@@ -118,7 +118,7 @@ dd {
 
     <h1>Parks List</h1>
 
-    <h3>Joshua Tree</h3>
+    <h3 id="parks-toggle">Joshua Tree</h3>
 
         <ul id="park">
             <li>area: 1234 sqMi</li>
@@ -127,7 +127,7 @@ dd {
             <li>Named for the region’s twisted, bristled Joshua trees.</li>
         </ul>
 
-    <h3>Everglades</h3>
+    <h3 id="parks-toggle">Everglades</h3>
 
         <ul id="park">
             <li>area: 2357 sqMi</li>
@@ -136,7 +136,7 @@ dd {
             <li>The region is the largest subtropical wetland ecosystem in North America, the largest wilderness in the Southeast and the largest mangrove ecosystem in the western hemisphere.</li>
         </ul>
 
-    <h3>Big Bend</h3>
+    <h3 id="parks-toogle">Big Bend</h3>
 
         <ul id="park">
             <li>area: 1251 sqMi</li>
@@ -156,32 +156,22 @@ dd {
     $(document).ready(function() {
         $('#show-invisible').click(function(event) {
             event.preventDefault();
-            $('dd').toggle();
+            $('dd').fadeToggle();
         });
     });
 
-    // $(document).ready(function() {
-    //         $('dd').click(function() {
-    //             $('.invisible').toggle();
-    // });
+    
 
-
-
-
+    $('h3').click(function() {
+        $(this).next().fadeToggle();
+    });
+    
 
 
 
     $('ul').each(function(index,element) {
             $(element).children().first().css('font-weight', 'bold');
     });
-
-
-
-    $('li').click(function(event) {
-            $(this).parent().addClass('hide');
-    });
-
-
 
 
 
