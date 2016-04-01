@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+ <html>
+<head>
+    <title>jquery_faq.html</title>
+<style>
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#show-invisible {
+    text-align: center;
+    margin-left: 500px; 
+}
+
+.invisible {
+  display: none;
+}
+
+dt {
+    color: black;
+    margin-left: 100px;
+}
+
+dd {
+    color: blue;
+}
+
+</style>
+</head>
+<body>
+
+    <h1>FUN FACTS ON NATIONAL PARKS</h1>
+
+    <a href="#" id="show-invisible">MORE INFO</a>
+
+    <dl>
+        <dt>
+            As you may know, the National Park Service sets aside land for all of us to enjoy in its natural state. 
+        </dt>
+        <dd class="invisible">
+            How much, you ask? 51 million acres! About the size of Kansas. 
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            What was the worlds first national park?
+        </dt>
+        <dd class="invisible">
+            The world’s first national park, Yellowstone, was created in 1872 by President Ulysses S. Grant. Its caretakers – the cavalry. 
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            Wind Cave National Park.
+        </dt>
+        <dd class="invisible">
+            Wind Cave National Park is the first cave to be named a national park in the world. In addition to its length (currently sixth longest in the world), Wind Cave is known for its calcite formations known as “boxwork.” About 95% of the world’s boxwork is found in Wind Cave. 
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            What is the smallest national park?
+        </dt>
+        <dd class="invisible">
+            The smallest national park is Hot Springs National Park in Arkansas coming in at about 5,500 acres. The biggest? Wrangell – St. Elias National Park in Alaska has an area of over 8.3 million acres and is larger than each of the nine smallest states.
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            National Park vs. National Monument.
+        </dt>
+        <dd class="invisible">
+            Sometimes national parks and national monuments are confused. National parks are chosen for their natural beauty, unique geological features, and unusual ecosystems. National monuments are chosen for their historical or archeological significance. 
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            Do all states have a national park or national monument?
+        </dt>
+        <dd class="invisible">
+            Only one state in the country is not lucky enough to currently have either a national park or national monument. It is actually the country’s first state, Delaware. Poor Delaware.
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            Death Valley.
+        </dt>
+        <dd class="invisible">
+            Death Valley National Park, which has the lowest elevation in the U.S. at 282 feet below sea level, is only 76 miles from Mount Whitney, the highest point in the contiguous U.S. at 14,505 feet.
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            Grand Canyon.
+        </dt>
+        <dd class="invisible">
+            The Grand Canyon is both a record of history and source of mystery. The Colorado River running through the canyon cuts through metamorphic rock called schist, which is about 1.75 billion years old. However the beginnings of the canyon are much debated by scientists. Did the Colorado River carve the whole canyon or was there already an ancient gorge waiting for the new river over 5 million years ago? 
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            Crater Lake.
+        </dt>
+        <dd class="invisible">
+            Crater Lake, the U.S.’ deepest lake and seventh deepest in the world, took 250 years of rain and snow accumulation to reach its current water level. 
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            A Volcanoe in Yellow Stone.
+        </dt>
+        <dd class="invisible">
+            The Yellowstone Caldera, in Yellowstone National Park, is a super volcano that is responsible for three of the world’s six biggest volcano eruptions. It is on pace to blow about 100,000 years from now. So come see it while you still can! - See more at: http://www.austinadventures.com/travel-resources/10-fun-facts-about-national-parks/#sthash.jnsPZZFW.dpuf
+        </dd>
+    </dl>
+
+
+</body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+(function() {
+"use strict";
+  
+    
+    $(document).ready(function() {
+            $('#show-invisible').click(function(event) {
+                event.preventDefault();
+                $('dd').toggleClass('invisible');
+            });
+        });
+
+
+
+
+
+})();
+</script>
+</html>
+
+
+
+
+                
+
