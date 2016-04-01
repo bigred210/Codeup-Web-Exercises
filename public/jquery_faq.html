@@ -156,9 +156,18 @@ dd {
     $(document).ready(function() {
         $('#show-invisible').click(function(event) {
             event.preventDefault();
-            $('dd').toggleClass('invisible');
+            $('dd').toggle();
         });
     });
+
+    // $(document).ready(function() {
+    //         $('dd').click(function() {
+    //             $('.invisible').toggle();
+    // });
+
+
+
+
 
 
 
@@ -169,7 +178,7 @@ dd {
 
 
     $('li').click(function(event) {
-            $(this).parent().addClass('invisible');
+            $(this).parent().addClass('hide');
     });
 
 
