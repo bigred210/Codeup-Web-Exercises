@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adventure-Time</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        #icekingdom {
+          /* Set rules to fill background */
+          min-height: 100%;
+          min-width: 1024px;
+            
+          /* Set up proportionate scaling */
+          width: 100%;
+          height: auto;
+            
+          /* Set up positioning */
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1000;
+        }
+
+        #clicker {
+            margin-top: 70px;
+            margin-left: 990px;
+            background: transparent;
+            color: #84a9b3;
+        }
+
+        #finn-jake {
+            margin-top: -45px;
+            margin-left: -170px;
+            position: relative;
+        }
+
+        #ice-king {
+            margin-top: -60px;
+            margin-left: -390px;
+            position: relative;
+        }
+
+        #gunter {
+            position: relative;
+            margin-left: 10px;
+            margin-top:  205px;
+        }
+
+        
+
+        
+    </style>
+</head>
+<body>
+    
+        <img id="icekingdom" src="/img/icekingdom.jpg">
+
+    <div>
+        <button id="clicker" class="btn">HERE</button>
+    </div>
+    <div>
+        <img id="ice-king" src="/img/iceking1.png">
+    </div>
+    <div>
+        <img id="finn-jake" src="/img/finnjake.png">
+    </div>
+    <div>
+        <img id="gunter" src="/img/gunter.png">
+    </div>
+    <!-- <div>
+        <img id="king-flee" src="/img/icekingrun.png">
+    </div>
+    <div>
+        <img id="finn-attack" src="/img/jake2.png">
+    </div> -->
+   
+
+
+
+   
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        "use strict";
+        
+                $("#clicker").click(function() {
+                    $("#ice-king").animate({
+                        left: "+=100",
+                        top: "150px"
+                    }, 1000).animate({
+                        left: "+=175",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=150",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=150",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=150",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=120",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=20",
+                        top: "+=50px"
+                    }, 1000).fadeOut( "slow", function() {
+                    });
+                });
+
+                $("#clicker").click(function() {
+                    $("#finn-jake").animate({
+                        left: "+=150",
+                        top: "150px"
+                    }, 1000).animate({
+                        left: "+=155",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=150",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=130",
+                        top: "+=50px"
+                    }, 1000).animate({
+                        left: "+=130",
+                        top: "+=50px"
+                    }, 1000).fadeOut( "slow", function() {
+                    });
+                });
+
+                $("#clicker").click(function() {
+                    $("#gunter").animate({
+                        left: "+=50",
+                        top: "-=20x"
+                    }, 1000).animate({
+                        left: "+=55",
+                        top: "-=25px"
+                    }, 1000).fadeOut( "slow", function() {
+                    });
+                });
+
+
+
+    });
+</script>
+</body>
+</html>
