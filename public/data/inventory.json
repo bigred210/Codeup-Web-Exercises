@@ -1,0 +1,36 @@
+[
+    {
+        "title": "HALO",
+        "quantity": 25,
+        "categories": [
+            "Xbox1",
+            "Used"
+        ],
+        "price": 20
+    }, {
+        "title": "Madden",
+        "quantity": 7,
+        "categories": [
+            "PS4",
+            "Used"
+        ],
+        "price": 16
+    }, {
+        "title": "Splatoon",
+        "quantity": 200,
+        "categories": [
+            "Wii-U",
+            "Used"
+        ],
+        "price": 15
+    }, {
+        "title": "Rampage",
+        "quantity": 1,
+        "categories": [
+            "Atari",
+            "New"
+        ],   
+        "price": 75
+        }
+]
+

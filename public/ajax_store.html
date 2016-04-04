@@ -2,12 +2,94 @@
 <html>
 <head>
     <title>Online Store</title>
+            <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style type="text/css">
+
+    body {
+        background: black;
+    }
+
+    h1 {
+        text-align: center;
+        color: #aba693;
+    }
+
+    .jumbotron {
+        background: black;
+        height: 135px;
+        margin-bottom: 0;
+    }
+
+    #pac-man {
+        position: relative;
+        text-align: center;
+        margin-left: -50px;
+    }
+
+    #blue-ghost {
+        position: relative;
+        margin-left: 40px;
+    }
+
+    #orange-ghost {
+        position: relative;
+        margin-left: 240px;
+    }
+
+    #pink-ghost {
+        position: relative;
+        margin-left: 340px;
+        margin-top: 0;
+        z-index: .5;
+    }
+
+    #products {
+        border: 0;
+    }
+
+    table {
+        background: url("/img/vg.jpg") no-repeat;
+        margin: 0;
+        border: 0;
+        padding: 0;
+    }
+
+    th {
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+        color: black;
+    }
+
+    td {
+        border: 0;
+        padding: 0;
+    }
+
+    #products {
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+    }
+
+    </style>
 </head>
 <body>
+<div class="container">
+<h1>My Game Store</h1>
 
-<h1>My Tool Store</h1>
 
-<table id="products">
+<div id="jumbo" class="jumbotron">
+<img id="pac-man" src="/img/pacman.png">
+<img id="blue-ghost" src="/img/blueghost.png">
+<img id="orange-ghost" src="/img/orangeghost.png">
+<img id="pink-ghost" src="/img/pinkghost.png">
+</div>
+
+
+<table id="products" class="table">
     <thead>
         <tr>
             <th>Game</th>
@@ -19,16 +101,23 @@
     <tbody id="insertProducts"></tbody>
 </table>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+<button id="refresh" class="btn">Refresh</button>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script>
 (function() {
-    // TODO: Create an ajax GET request for /data/inventory.json
+ 
                 // Assign to variable
+        var $btn = $("#refresh");
+        var info = function(){
         var $jqxhr = $.ajax("/data/inventory.json");
         var $products = $("#insertProducts");
                 // Attach callback functions individually
         $jqxhr.done(function(data) {
+            $products.html("");
             for (var i = 0; i < data.length; i++) {
                 var $html = "<tr>"+
                                 "<td>" + data[i].title + "</td>" +
@@ -39,13 +128,128 @@
                     $products.append($html);
             };
         });
+        };
 
+        info();
         
-    // TODO: Take the data from inventory.json and append it to the products table
-    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-    //             its contents and fields
-    //       HINT: You will want to target #insertProducts for your new HTML elements
-    
+        $btn.click(function() {
+            info();
+        });
+
+
+
+        $("#jumbo").click(function() {
+                    $("#pink-ghost").animate({
+                        left: "+=30",
+                     
+                        }, 1000).animate({
+                        left: "+=30",
+                        
+                    }, 1000).animate({
+                        left: "+=30",
+                        
+                    }, 1000).animate({
+                        left: "+=60",
+                        
+                    }, 1000).animate({
+                        left: "+=60",
+                        
+                    }, 1000).animate({
+                        left: "+=80",
+                        
+                    }, 1000).animate({
+                        left: "+=80",
+                        
+                    }, 1000).animate({
+                        left: "+=70",
+                        
+                    }, 1000).animate({
+                        left: "+=70",
+                        
+                    }, 1000).animate({
+                        left: "+=70",
+                        
+                    }, 1000).animate({
+                        left: "+=70",
+                        
+                    }, 1000).fadeOut( "fast", function() {
+                    });
+        });
+
+        $("#jumbo").click(function() {
+                    $("#orange-ghost").animate({
+                        left: "+=30",
+                     
+                        }, 1000).animate({
+                        left: "+=30",
+                        
+                    }, 1000).animate({
+                        left: "+=50",
+                        
+                    }, 1000).animate({
+                        left: "+=50",
+                        
+                    }, 1000).animate({
+                        left: "+=30",
+                        
+                    }, 1000).animate({
+                        left: "+=30",
+                        
+                    }, 1000).fadeOut( "fast", function() {
+                    });
+        });
+
+        $("#jumbo").click(function() {
+                    $("#blue-ghost").animate({
+                        left: "+=30",
+                     
+                        }, 1000).animate({
+                        left: "+=30",
+                        
+                    }, 1000).fadeOut( "fast", function() {
+                    });
+        });
+
+        $("#jumbo").click(function() {
+                    $("#pac-man").animate({
+                        left: "+=65",
+                     
+                        }, 1000).animate({
+                        left: "+=65",
+                        
+                    }, 1000).animate({
+                        left: "+=50",
+                        
+                    }, 1000).animate({
+                        left: "+=95",
+                        
+                    }, 1000).animate({
+                        left: "+=98",
+                        
+                    }, 1000).animate({
+                        left: "+=90",
+                        
+                    }, 1000).animate({
+                        left: "+=80",
+                        
+                    }, 1000).animate({
+                        left: "+=120",
+                        
+                    }, 1000).animate({
+                        left: "+=120",
+                        
+                    }, 1000).animate({
+                        left: "+=120",
+                        
+                    }, 1000).animate({
+                        left: "+=120",
+                        
+                    }, 1000).animate({
+                        left: "+=150",
+                        
+                    }, 1000).fadeOut( "fast", function() {
+                    });
+        });
        
 
 
