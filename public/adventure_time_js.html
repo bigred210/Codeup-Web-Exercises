@@ -29,13 +29,13 @@
         }
 
         #finn-jake {
-            margin-top: -45px;
-            margin-left: -170px;
+            margin-top: 10px;
+            margin-left: -230px;
             position: relative;
         }
 
         #ice-king {
-            margin-top: -60px;
+            margin-top: -30px;
             margin-left: -390px;
             position: relative;
         }
@@ -52,7 +52,9 @@
     </style>
 </head>
 <body>
-    
+
+
+    <div class="container">
         <img id="icekingdom" src="/img/icekingdom.jpg">
 
     <div>
@@ -67,18 +69,13 @@
     <div>
         <img id="gunter" src="/img/gunter.png">
     </div>
-    <!-- <div>
-        <img id="king-flee" src="/img/icekingrun.png">
-    </div>
-    <div>
-        <img id="finn-attack" src="/img/jake2.png">
-    </div> -->
-   
-
-
-
-   
-
+    <audio id="jake-laugh" preload="auto">
+        <source src="/audio/jake.mov" type="audio/mpeg">
+    </audio>
+    <audio id="ice-kill" preload="auto">
+        <source src="/audio/icekill.mov" type="audio/mpeg">
+    </audio>
+   </div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -95,41 +92,33 @@
                         top: "+=50px"
                     }, 1000).animate({
                         left: "+=150",
-                        top: "+=50px"
+                        top: "+=30px"
                     }, 1000).animate({
                         left: "+=150",
-                        top: "+=50px"
+                        top: "+=90px"
                     }, 1000).animate({
-                        left: "+=150",
-                        top: "+=50px"
-                    }, 1000).animate({
-                        left: "+=120",
-                        top: "+=50px"
-                    }, 1000).animate({
-                        left: "+=20",
-                        top: "+=50px"
-                    }, 1000).fadeOut( "slow", function() {
+                        left: "+=240",
+                        top: "+=80px"
+                    }, 1000).fadeOut( "fast", function() {
                     });
                 });
 
                 $("#clicker").click(function() {
                     $("#finn-jake").animate({
                         left: "+=150",
-                        top: "150px"
-                    }, 1000).animate({
-                        left: "+=155",
-                        top: "+=50px"
+                        top: "130px"
+                        }, 1000).animate({
+                        left: "+=175",
+                        top: "+=30px"
                     }, 1000).animate({
                         left: "+=150",
-                        top: "+=50px"
+                        top: "+=20px"
                     }, 1000).animate({
-                        left: "+=130",
-                        top: "+=50px"
-                    }, 1000).animate({
-                        left: "+=130",
-                        top: "+=50px"
-                    }, 1000).fadeOut( "slow", function() {
+                        left: "+=220",
+                        top: "+=80px"
+                    }, 1000).fadeOut( "fast", function() {
                     });
+                   
                 });
 
                 $("#clicker").click(function() {
@@ -137,10 +126,18 @@
                         left: "+=50",
                         top: "-=20x"
                     }, 1000).animate({
-                        left: "+=55",
+                        left: "+=85",
                         top: "-=25px"
                     }, 1000).fadeOut( "slow", function() {
                     });
+                });
+
+                  $("#clicker").click(function() {
+                    $("#jake-laugh")[0].play();
+                });
+
+                  $("#clicker").click(function() {
+                    $("#ice-kill")[0].play();
                 });
 
 
