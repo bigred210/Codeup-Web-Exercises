@@ -1,0 +1,94 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>Weather Map</title>
+
+    <style type="text/css">
+        
+        body {
+            background-color: black;
+        }
+
+        #map-canvas {
+            margin-left: 200px;
+            margin-top: 60px;
+            width: 900px;
+            height: 400px;
+        }
+       
+        
+
+    </style>
+</head>
+<body>
+
+    <!-- div to hold map -->
+        <div id="map-canvas"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Script to Load the Google Maps API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVA8GE8m5qdHumyaoYLjRG1e0N_qIn3Co&libraries=places"></script>
+<!-- jQUERY Script   -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+(function() {
+"use strict";
+
+    // Set our map options
+        var mapOptions = {
+    // Set the zoom level
+            zoom: 15,
+    // This sets the center of the map at our location
+            center: {
+                lat :  29.430581, 
+                lng : -98.488705
+            }
+        };    
+    // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    // Adding trafficLayer
+        var trafficLayer = new google.maps.TrafficLayer();
+            trafficLayer.setMap(map);
+    // Place a draggable marker on the map
+        var marker = new google.maps.Marker({
+            position: {
+                lat :  29.430581, 
+                lng : -98.488705
+            },
+            map: map,
+            draggable:true,
+            title:"Drag me!"
+        }); 
+
+    
+    // Weather API  
+        $.get("http://api.openweathermap.org/data/2.5/weather", {
+
+            APPID: "18ef130d284be1ef8ddf205276e40047",
+
+            q:     "San Antonio, TX",
+
+            units: "imperial"
+
+        }).done(function(data) {
+            console.log(data);
+        });
+
+
+
+
+
+})();
+</script>
+</body>
+</html>
