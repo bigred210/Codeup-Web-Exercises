@@ -2,36 +2,84 @@
 <html>
 <head>
     <title>Weather Map</title>
-
+<!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+ <!-- css -->   
     <style type="text/css">
         
-        body {
-            background-color: black;
+        
+        #background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            background: no-repeat;
+            background-size: cover;
         }
 
         #map-canvas {
-            margin-left: 250px;
-            margin-top: 60px;
-            width: 900px;
+            margin-top: 100px;
             height: 400px;
         }
 
-        #jq-weather {
+        #city {
             text-align: center;
-            color: white;
+            color: #2EFE9A;
+            font-size: 50px;
         }
-       
-        
+
+        #day-one {
+            text-align: center;
+            color: #2EFE9A;
+            font-size: 20px;
+        }
+
+        #day-two {
+            text-align: center;
+            color: #2EFE9A;
+            font-size: 20px;
+        }
+
+        #day-three {
+            text-align: center;
+            color: #2EFE9A;
+            font-size: 20px;
+
+        }
+
 
     </style>
 </head>
 <body>
+    <div class="contatiner">
+        <video autoplay loop muted id="background">
+            <source src="/img/mapbgvid.mp4" type="video/mp4">
+        </video>
+      
+            <!-- div to hold map -->
+         <div id="map-canvas" class="col-md-8 col-md-offset-2"></div>
+        
+        <div class="row">
+            <!-- div to hold city -->
+                <div id="city" class="col-md-12"></div>
+        </div> <!-- row end -->
+        <div class="row">
+            <!-- div to hold day-1 -->
+                <div id="day-one" class="col-md-4"></div>
 
-    <!-- div to hold map -->
-        <div id="map-canvas"></div>
+            <!-- div to hold day-2 -->
+                <div id="day-two" class="col-md-4"></div>
 
-    <!-- div to hold jquery weather -->
-        <div id="jq-weather"></div>
+            <!-- div to hold day-3 -->
+                <div id="day-three" class="col-md-4"></div>
+        </div> <!-- row end -->
+    </div> <!-- container end -->
 
 
 
@@ -43,10 +91,13 @@
 
 <!-- Script to Load the Google Maps API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVA8GE8m5qdHumyaoYLjRG1e0N_qIn3Co&libraries=places"></script>
-<!-- jQUERY Script   -->
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- jQuery Script   -->
+<!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
 <script>
-(function() {
+// (function() {
 "use strict";
 
     // Set our map options
@@ -69,6 +120,7 @@
             trafficLayer.setMap(map);
 
     // Place a draggable marker on the map
+        var markerWaldo = '/img/waldo.png';
         var marker = new google.maps.Marker({
             position: {
                 lat :  29.430581, 
@@ -77,41 +129,81 @@
             map: map,
             draggable:true,
             animation: google.maps.Animation.DROP,
-            title:"Drag me!"
+            icon: markerWaldo,
+            title:"LET'S GO!"
         });
 
     // Assign to variable
-        var $info = function(){
-            var $weather = $("#jq-weather");
-            var $jqxhr = $.get("http://api.openweathermap.org/data/2.5/weather", {
+        var $info = function(reqLat, reqLon){
+            var $city = $("#city")
+            var $day1 = $("#day-one");
+            var $day2 = $("#day-two");
+            var $day3 = $("#day-three");
+            var $jqxhr = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
 
                 APPID: "8c55b8902e1bdaf8667dec64b892fc7a",
 
-                q:     "San Antonio, TX",
+                lat:    reqLat,
+                lon:    reqLon,
 
                 units: "imperial"
 
             });
-    // Attach callback function
+
+        
             $jqxhr.done(function(data) {
                 console.log(data)
-                $weather.html("");
+    // city ------------------------------
+                var $html = "<p>" + data.city.name + "</p>";
+                $city.html(" ")
+                $city.append($html);
+    // day1 ------------------------------
                 var $html = "<div>"+
-                                "<h3>" + data.name + "</h3>" +
-                                "<p>" + "Temperature:" + " "  + Math.round(data.main.temp_min) + " / " + Math.round(data.main.temp_max) + " " + "&#8457;" + "</p>" +
-                                "<p>" + "Wind:" + " "  + Math.round(data.wind.speed) + " " + "mph" + "</p>" +
-                                "<p>" + "Humiditiy:" + " "  + data.main.humidity + "</p>" +
+                                
+                                "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[0].weather[0].icon + '.png">' + "</p>" +
+                                "<p>" + "Temperature:" + " "  + Math.round(data.list[0].temp.min) + " / " + Math.round(data.list[0].temp.max) + " " + "&#8457;" + "</p>" +
+                                "<p>" + "Wind:" + " "  + Math.round(data.list[0].speed) + " " + "mph" + "</p>" +
+                                "<p>" + "Humiditiy:" + " "  + data.list[0].humidity + "</p>" +
                             "</div>";
-                $weather.append($html);
+                $day1.html(" ")
+                $day1.append($html);
+    // day2 ------------------------------
+                var $html = "<div>"+
+                                
+                                "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[1].weather[0].icon + '.png">' + "</p>" +
+                                "<p>" + "Temperature:" + " "  + Math.round(data.list[1].temp.min) + " / " + Math.round(data.list[1].temp.max) + " " + "&#8457;" + "</p>" +
+                                "<p>" + "Wind:" + " "  + Math.round(data.list[1].speed) + " " + "mph" + "</p>" +
+                                "<p>" + "Humiditiy:" + " "  + data.list[1].humidity + "</p>" +
+                            "</div>";
+                $day2.html(" ")
+                $day2.append($html);
+    // day3 ------------------------------
+                var $html = "<div>"+
+                                
+                                "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[2].weather[0].icon + '.png">' + "</p>" +
+                                "<p>" + "Temperature:" + " "  + Math.round(data.list[2].temp.min) + " / " + Math.round(data.list[2].temp.max) + " " + "&#8457;" + "</p>" +
+                                "<p>" + "Wind:" + " "  + Math.round(data.list[2].speed) + " " + "mph" + "</p>" +
+                                "<p>" + "Humiditiy:" + " "  + data.list[2].humidity + "</p>" +
+                            "</div>";
+                $day3.html(" ")
+                $day3.append($html);
+           
             }); //.done end
-        };    
+        }; 
 
-        $info();
+        marker.addListener("dragend", function(){ 
+            var position = marker.getPosition();
+            var lat = position.lat();
+            var lng = position.lng();
+        $info(lat,lng);
+        });
+
+        $info(29.430581, -98.488705);
 
 
 
 
-})();
+// })();
 </script>
 </body>
 </html>
