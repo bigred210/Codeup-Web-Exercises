@@ -24,14 +24,16 @@
         }
 
         #map-canvas {
-            margin-top: 100px;
+            margin-top: 30px;
             height: 400px;
         }
+
+
 
         #city {
             text-align: center;
             color: #2EFE9A;
-            font-size: 50px;
+            font-size: 40px;
         }
 
         #day-one {
@@ -58,17 +60,29 @@
 </head>
 <body>
     <div class="contatiner">
+
+            <!-- div hidden -->
+        <div id="secret_video" style="display: none;" class="jumbtron">
+            <video preload="auto" id="video">
+                <source src="../img/dbz.mp4" type="video/mp4" >
+            </video>
+        </div>
+            <!-- video -->
         <video autoplay loop muted id="background">
             <source src="/img/mapbgvid.mp4" type="video/mp4">
         </video>
       
             <!-- div to hold map -->
-         <div id="map-canvas" class="col-md-8 col-md-offset-2"></div>
+        <div id="map-canvas" class="col-md-8 col-md-offset-2"></div>
         
+            <!-- search box for map -->
+        <input id="pac-input" class="controls col-md-3 col-md-offset-3" type="text" placeholder="What's the weather like in . . . ?">
+
         <div class="row">
             <!-- div to hold city -->
                 <div id="city" class="col-md-12"></div>
         </div> <!-- row end -->
+
         <div class="row">
             <!-- div to hold day-1 -->
                 <div id="day-one" class="col-md-4"></div>
@@ -79,6 +93,7 @@
             <!-- div to hold day-3 -->
                 <div id="day-three" class="col-md-4"></div>
         </div> <!-- row end -->
+
     </div> <!-- container end -->
 
 
@@ -104,7 +119,7 @@
         var mapOptions = {
 
     // Set the zoom level
-            zoom: 10,
+            zoom: 9,
 
     // This sets the center of the map at our location
             center: {
@@ -120,7 +135,7 @@
             trafficLayer.setMap(map);
 
     // Place a draggable marker on the map
-        var markerWaldo = '/img/waldo.png';
+        var markerWaldo = '/img/teach2.png';
         var marker = new google.maps.Marker({
             position: {
                 lat :  29.430581, 
@@ -130,7 +145,7 @@
             draggable:true,
             animation: google.maps.Animation.DROP,
             icon: markerWaldo,
-            title:"LET'S GO!"
+            title:"Umm? Like yeah totally"
         });
 
     // Assign to variable
@@ -159,7 +174,7 @@
                 $city.append($html);
     // day1 ------------------------------
                 var $html = "<div>"+
-                                
+                                "<h3>" + "Today" + "</3>" +
                                 "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[0].weather[0].icon + '.png">' + "</p>" +
                                 "<p>" + "Temperature:" + " "  + Math.round(data.list[0].temp.min) + " / " + Math.round(data.list[0].temp.max) + " " + "&#8457;" + "</p>" +
                                 "<p>" + "Wind:" + " "  + Math.round(data.list[0].speed) + " " + "mph" + "</p>" +
@@ -169,7 +184,7 @@
                 $day1.append($html);
     // day2 ------------------------------
                 var $html = "<div>"+
-                                
+                                "<h3>" + "Tomorrow" + "</3>" +
                                 "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[1].weather[0].icon + '.png">' + "</p>" +
                                 "<p>" + "Temperature:" + " "  + Math.round(data.list[1].temp.min) + " / " + Math.round(data.list[1].temp.max) + " " + "&#8457;" + "</p>" +
                                 "<p>" + "Wind:" + " "  + Math.round(data.list[1].speed) + " " + "mph" + "</p>" +
@@ -179,7 +194,7 @@
                 $day2.append($html);
     // day3 ------------------------------
                 var $html = "<div>"+
-                                
+                                "<h3>" + "Day After" + "</3>" +
                                 "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[2].weather[0].icon + '.png">' + "</p>" +
                                 "<p>" + "Temperature:" + " "  + Math.round(data.list[2].temp.min) + " / " + Math.round(data.list[2].temp.max) + " " + "&#8457;" + "</p>" +
                                 "<p>" + "Wind:" + " "  + Math.round(data.list[2].speed) + " " + "mph" + "</p>" +
@@ -198,9 +213,56 @@
         $info(lat,lng);
         });
 
-        $info(29.430581, -98.488705);
+    // search box that will drop new marker update weather by search and not drag
+        function initAutocomplete() {
+
+            var input = document.getElementById('pac-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            searchBox.addListener('places_changed', function() {
+              var places = searchBox.getPlaces();
+
+              var position = places[0].geometry.location;
+
+              map.setCenter(position);
+              marker.setPosition(position);
+              var lat = position.lat();
+              var lng = position.lng();
+              $info(lat,lng);
+
+            });
+        } // initAutocomplete End
+
+      initAutocomplete();
+
+    $info(29.430581, -98.488705);
+
+    $(document).ready(function(){
+
+        var keys = [];
+
+        var konami = '38,38,40,40,37,39,37,39,66,65';
+     
+       $(document).keydown(function(e) {
+           
+            keys.push( e.keyCode );
+                
+                if ( keys.toString().indexOf( konami ) >= 0 ){
+
+                    // alert("YOU WILL NOW LEVEL UP !")
+                    $("#secret_video").show();
+                    $('#video')[0].play();
+                    var timeoutId = setTimeout(function () {
+                        $("#secret_video").css("display" , "none");
+                    }, 12500);
 
 
+
+                    keys = [];
+                }    
+        });  
+    }); 
 
 
 // })();
