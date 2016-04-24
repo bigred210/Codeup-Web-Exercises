@@ -1,0 +1,15 @@
+<?php
+
+
+$adjectives [
+    addicting, 
+       
+]
+
+$nouns [
+    
+]
+
+
+
+
