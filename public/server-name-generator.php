@@ -158,14 +158,6 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
         location.reload();
     }
 
-    // function playVideo() {
-    //     $("#secret_video").show();
-    //     $('#video')[0].play();
-    //     var timeoutId = setTimeout(function () {
-    //         $("#secret_video").css("display" , "none");
-    //     }, 47500);
-    // }
-
 </script>
 </body>
 </html>
