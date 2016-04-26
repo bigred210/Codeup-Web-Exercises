@@ -1,6 +1,10 @@
 <?php
 
-$favorites = ['family','writing','cooking','learning','guitars','children','guns','coding','cars'];
+function pageController() 
+{
+    return ['favorites' => ['family','writing','cooking','learning','guitars','children','guns','coding','cars']];
+}
+extract(pageController());
 
 ?>
 
@@ -19,7 +23,7 @@ $favorites = ['family','writing','cooking','learning','guitars','children','guns
         ul {
         padding-left: 570px;
         color: green;
-        width: 100px;
+        width: 55px;
         }
         li:nth-child(even) {
         background-color: white;
@@ -29,9 +33,9 @@ $favorites = ['family','writing','cooking','learning','guitars','children','guns
 <body>
     <h1>My Favorite Things</h1>
     <ul>
-    <?php foreach ($favorites as $favorite) { ?>
+    <?php foreach ($favorites as $favorite) : ?>
         <li><?= $favorite; ?></li>
-    <?php } ?>
+    <?php endforeach ?>
     </ul>
 </body>
 </html>
