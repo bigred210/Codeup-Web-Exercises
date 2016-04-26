@@ -1,12 +1,61 @@
 <?php
 
-$adjectives = ['Crouching','Hidden','Flying','Drunken','Purring','Slouching','Flapping','Crawling','Spitting','Flaming','Dancing','Flatulent'];
+function adjectives_random( $num = 1) {
+    $adjectives = ['Crouching','Hidden','Flying','Drunken','Purring','Slouching','Flapping','Crawling','Spitting','Flaming','Dancing','Flatulent'];
+    shuffle($adjectives);
 
-$nouns = ['Ferret','Ostrich','Manatee','Llama','Moose','Bull','Gnat','Baboon','Wombat','Alpaca','Bobcat','Squirrel'];
+        $adjective = [];
+        for ($i = 0; $i < $num; $i++) {
+            $adjective[] = $adjectives[$i];
+        }
+        return $num == 1 ? $adjective[0] : $adjective;
+}
 
-$po = ['OH, YEAH!', 'Whew! squashed my nuggets', 'WHOA! WHAT?', 'I need a bathroom break.'];
+function nouns_random( $num = 1) {
+    $nouns = ['Ferret','Ostrich','Manatee','Llama','Moose','Bull','Gnat','Baboon','Wombat','Alpaca','Bobcat','Squirrel'];
+    shuffle($nouns);
+        
+        $noun = [];
+        for ($i = 0; $i < $num; $i++) {
+            $noun[] = $nouns[$i];
+        }
+        return $num == 1 ? $noun[0] : $noun;
+}
 
-$shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warrior?', 'Again! This time faster!'];
+function po_random( $num = 1) {
+    $po = ['OH, YEAH!', 'Whew! squashed my nuggets', 'WHOA! WHAT?', 'I need a bathroom break.'];
+    shuffle($po);
+
+        $poTalk = [];
+        for ($i = 0; $i < $num; $i++) {
+            $poTalk[] = $po[$i];
+        }
+        return $num == 1 ? $poTalk[0] : $poTalk;
+}
+
+function shifu_random( $num = 1) {
+    $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warrior?', 'Again! This time faster!'];
+    shuffle($shifu);
+
+        $shifuTalk = [];
+        for ($i = 0; $i < $num; $i++) {
+            $shifuTalk[] = $shifu[$i];
+        }
+        return $num == 1 ? $shifuTalk[0] : $shifuTalk;
+}
+
+function pageController()
+{
+    $serverName = adjectives_random() . " " . nouns_random();
+
+    $poSpeak = po_random();
+
+    $shifuSpeak = shifu_random();
+    
+    return array('serverName' => $serverName , 'poSpeak' => $poSpeak , 'shifuSpeak' => $shifuSpeak);
+}
+
+extract(pageController());
 
 ?>
 
@@ -24,6 +73,7 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
             background-image: url('img/hall.jpg');
             color: #80d175;
         }
+
         #scroll {
             width:  415px;
             height: 150px;
@@ -31,6 +81,7 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
             margin-top: -380px;
             z-index: -1;
         }
+
         button {
             margin-left: 575px;
             margin-top:  235px;
@@ -38,6 +89,7 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
             border: none;
             background: transparent;
         }
+
         img {
             width:150px;
             height:250px;
@@ -49,15 +101,18 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
             position: relative;
             z-index: 1;
         }
+
         p {
             margin-left: 528px;
             margin-top:  405px;
             font-size: 27px;
             text-align: left;   
         }
+
         #secret_video {
             display: none; 
         }
+
         #poParagraph {
             margin-top: -230px;
             margin-right: 690px;
@@ -66,6 +121,7 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
             float: right;
             color: #7df96c;
         }
+
         #shifuParagraph {
             margin-top: -105px;
             margin-right: 500px;
@@ -83,26 +139,7 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
     
     <p>
         <?php 
-            function adjectives_random($adjectives, $num = 1) {
-            shuffle($adjectives);
-        
-                $adjective = [];
-                for ($i = 0; $i < $num; $i++) {
-                    $adjective[] = $adjectives[$i];
-                }
-                return $num == 1 ? $adjective[0] : $adjective;
-            }
-
-            function nouns_random($nouns, $num = 1) {
-            shuffle($nouns);
-        
-                $noun = [];
-                for ($i = 0; $i < $num; $i++) {
-                    $noun[] = $nouns[$i];
-                }
-                return $num == 1 ? $noun[0] : $noun;
-            }
-                echo adjectives_random($adjectives) . " " . nouns_random($nouns);
+            echo $serverName;
         ?>
     </p>
 
@@ -113,39 +150,19 @@ $shifu = ['PO! are you ready?', 'Quit the horseplay PO.', 'You? The Dragon Warri
     </div>
 
     <p id="poParagraph">
-        <?php 
-            function po_random($po, $num = 1) {
-            shuffle($po);
-        
-                $poTalk = [];
-                for ($i = 0; $i < $num; $i++) {
-                    $poTalk[] = $po[$i];
-                }
-                return $num == 1 ? $poTalk[0] : $poTalk;
-            }
-            echo po_random($po);
-        ?>
+        <?php echo $poSpeak; ?>
     </p>
 
     <div>
         <img id="po" src="/img/postand.png">
     </div>
-    <p id="shifuParagraph">
-        <?php 
-            function shifu_random($shifu, $num = 1) {
-            shuffle($shifu);
-        
-                $shifuTalk = [];
-                for ($i = 0; $i < $num; $i++) {
-                    $shifuTalk[] = $shifu[$i];
-                }
-                return $num == 1 ? $shifuTalk[0] : $shifuTalk;
-            }
-            echo shifu_random($shifu);
-        ?>
+
+    <p id="shifuParagraph"> 
+        <?php echo $shifuSpeak; ?>  
     </p>
-    <div>
-        <img id="shifu" src="/img/shifu.png">  
+
+    <div>   
+        <img id="shifu" src="/img/shifu.png">   
     </div>
 
     
