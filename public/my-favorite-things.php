@@ -1,6 +1,6 @@
 <?php
 
-$favorites = ['writing', 'learning','family','children','guns','guitars','cooking','coding','cars'];
+$favorites = ['family','writing','cooking','learning','guitars','children','guns','coding','cars'];
 
 ?>
 
@@ -8,13 +8,30 @@ $favorites = ['writing', 'learning','family','children','guns','guitars','cookin
 <html>
 <head>
     <title>Favorite Things!</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        h1 {
+        padding-left: 450px;
+        color: yellow;   
+        }
+        ul {
+        padding-left: 570px;
+        color: green;
+        width: 100px;
+        }
+        li:nth-child(even) {
+        background-color: white;
+        }
+    </style>
 </head>
 <body>
     <h1>My Favorite Things</h1>
-    <ol>
+    <ul>
     <?php foreach ($favorites as $favorite) { ?>
-        <li><?php echo $favorite; ?></li>
+        <li><?= $favorite; ?></li>
     <?php } ?>
-    </ol>
+    </ul>
 </body>
 </html>
