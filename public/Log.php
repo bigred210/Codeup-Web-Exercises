@@ -2,40 +2,40 @@
 
 class Log
 {
-    public $filename;
-    public $handle;
+    private $filename;
+    private $handle;
 
     public function __construct($prefix = 'log') 
     {
         $currentLog = date('Y-m-d');
-        $this->filename = "$prefix-$currentLog.log";  
-        $this->handle = fopen($this->filename, 'a');
-    }
-
-    public function logMessage($logLevel, $message)
+        $this->setFilename("$prefix-$currentLog.log");  
+        $this->setHandle(fopen($this->filename, 'a'));
+    } 
+    public function setFilename($filename)
     {
-        $currentLog = date('Y-m-d');
-        $currentTime = date('h:i:s=T');
-        fwrite($this->handle, $currentLog . ' ' . $currentTime . ' ' . "[$logLevel]" . ' ' . $message . PHP_EOL);
+        if (is_string($filename))
+        {
+          $this->filename = trim($filename);
+        }
     }
-
     public function logInfo($message)
     {
        $this->logMessage("INFO", "$message"); 
-    }
-
-    public function logError($message)
-    {
-       $this->logMessage("ERROR", "$message");
-    }
-
+    } 
     public function __destruct()
     {
         fclose($this->handle);
     }
+    public function logError($message)
+    {
+       $this->logMessage("ERROR", "$message");
+    }
+    public function __destruct()
+    {
+        fclose($this->handle);
+    }
+
 }
-
-
 
 
 
