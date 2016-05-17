@@ -1,0 +1,81 @@
+/* general body */
+
+body {
+    color: white;
+    text-shadow: 2px 3px #5f6e73;
+    font-size: 15px;
+    background-image: url('/img/park.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 1300px 840px;
+}
+
+h1 {
+    text-align: center;
+    margin: none;
+}
+
+/* form */
+
+form {
+    color: white;
+    text-align: center;
+    padding-top: -80px;
+}
+
+input {
+    text-align: center;
+    border-radius: 310px;
+    background: transparent;
+}
+
+::-webkit-input-placeholder {
+   color: white;
+   text-shadow: 2px 3px #5f6e73;
+}
+
+
+/* national park title */
+
+.jumbotron {
+    background-color: transparent;
+    text-align: center;
+    height: 30px;
+    margin: none;
+}
+
+/* park info */
+
+.info {
+    text-align: center;
+    padding-top: 30px;
+}
+
+/* button */
+
+button {
+    background: transparent;
+    border: none;
+}
+.back{
+    text-align: left;
+}
+
+.next {
+    text-align: right;
+   
+}
+
+/* blockqoute */
+.blockqoute {
+    padding-left: 50px;
+    padding-top:  -50px;
+    margin: none;
+}
+ 
+
+
+
+
+
+

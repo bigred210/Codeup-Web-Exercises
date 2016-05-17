@@ -24,6 +24,10 @@ video {
     
       /*_bg for about/portfolio/contact_*/
 
+.orange {
+    color: orange;
+}
+
 .greybg {
     background: url("../img/bck2grey.jpg");
     width: 100%;

@@ -1,34 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Konami Code</title>
+
     <style type="text/css">
 
     body {
-        background: black;
+        background: url('../img/dbz.png');
+        background-position: fixed;
+        background-repeat: no-repeat;
+        background-size: 1500px 750px
     }
 
     h1 {
-        text-align: center;`
-        font-size: 50px;
-        color: orange;
+        text-align: center;
+        margin-left: 605px;
+        margin-top:  680px;
+        font-size: 15px;
+        color: #f2f9d5;
+        background: transparent;
     }
 
-    #secret_modal {
-        height: 720px;
-        width: 1280px;
+    a {
+        text-align: center;
+        margin-left: 890px;
+        margin-top:  400px;
+        font-size: 15px;
+        color: #f2f9d5;
+        background: transparent; 
+    }
+
+    #secret_video {
+        height: 90px;
+        width: 880px;
         border-radius: 10px;
+    }
+
+    .row {
+        background-color: black;
+    }
+
+    .dbz4 {
+        text-align: center;
+    }
+
+    .dbz4 {
+        background-color: black;
+        height: 500px;
+        width: 1200px;
     }
 
     </style>
 </head>
 <body>
-    <h1 class="page">Konami Code</h1>
-    <div id="secret_video" style="display: none;">
-        <video preload="auto" id="video">
-            <source src="../img/dbz.mp4" type="video/mp4" >
-        </video>
+
+    <div>
+        <div id="secret_video" style="display: none;" class="jumbtron">
+            <video preload="auto" id="video">
+                <source src="../img/dbz.mp4" type="video/mp4" >
+            </video>
+        </div>
+        <h1 class="page">enter <br> ↑ ↑ ↓ ↓ ← → ← → b a</h1>
+        <a href="http://www.puffgames.com/dragon-ball-z-games.html" target="blank">PLAY GAME</a>
     </div>
+    <div class="container">
+        <div id="dbzwar" class="jumbtron">
+            <img src="../img/dbzwar.jpg">
+        </div>    <!-- jumbtron end -->
+        <div id="dbzpan" class="jumbtron">
+        <div class="row">
+            <div class="dbz1 col-md-4"></div>
+            <div class="dbz4 col-md-4"><img src="../img/dbz4.jpg"></div>
+            <div class="dbz1 col-md-4"></div>
+        </div>
+        </div>    <!-- jumbtron end -->
+    </div>  <!-- container end -->
+
+    
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"> </script>
 <script>
@@ -42,28 +91,77 @@
 
 
 
+    var keys = {
+            up:    38,
+            down:  40,
+            left:  37,
+            right: 39,
+            a:     65,
+            b:     66,
+            enter: 13
+        };
+        var sequence = [
+            keys.up,
+            keys.up,
+            keys.down,
+            keys.down,
+            keys.left,
+            keys.right,
+            keys.left,
+            keys.right,
+            keys.b,
+            keys.a,
+            keys.enter
+        ];
+        var keyIndex = 0;
+        $("body").keydown(function(e) {
+            var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+            if (charCode == sequence[keyIndex]) {
+                console.log("hit: " + charCode);
+                keyIndex++;
+                if (keyIndex == sequence.length) {
+                    console.log("A Winner Is You!");
+                    $("#secret_video").show();
+                    $('#video')[0].play();
+                    var timeoutId = setTimeout(function () {
+                        $("#secret_video").css("display" , "none");
+                    }, 12500);
+                    keyIndex = 0;
+                }
+            } else {
+                console.log("miss: " + charCode);
+                keyIndex = 0;
+            }
+        });
 
-$(document).ready(function(){
 
-    var keys    = [];
 
-    var konami  = '38,38,40,40,37,39,37,39,66,65';
- 
-   $(document).keydown(function(e) {
-       
-        keys.push( e.keyCode );
-            
-            if ( keys.toString().indexOf( konami ) >= 0 ){
 
-                alert("you got it")
-                $("#secret_video").show();
-                $('#video')[0].play();
+    // $(document).ready(function(){
 
-                keys = [];
-            } 
-    
-    }); 
-});      
+    //     var keys = [];
+
+    //     var konami = '38,38,40,40,37,39,37,39,66,65';
+     
+    //    $(document).keydown(function(e) {
+           
+    //         keys.push( e.keyCode );
+                
+    //             if ( keys.toString().indexOf( konami ) >= 0 ){
+
+    //                 // alert("YOU WILL NOW LEVEL UP !")
+    //                 $("#secret_video").show();
+    //                 $('#video')[0].play();
+    //                 var timeoutId = setTimeout(function () {
+    //                     $("#secret_video").css("display" , "none");
+    //                 }, 12500);
+
+
+
+    //                 keys = [];
+    //             }    
+    //     });  
+    // });      
 
 
  

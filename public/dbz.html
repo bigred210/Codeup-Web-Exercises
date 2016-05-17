@@ -1,0 +1,129 @@
+<!DOCtype html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>DBZ</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style type="text/css">
+
+    body {
+        text-align: center;
+        background: url('../img/dbz.png');
+        background-repeat: no-repeat;
+        color: #f2f9d5;
+        background-position: fixed;
+        background-size: 1600px 650px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-left: 670px;
+        margin-top:  600px;
+        font-size: 15px;
+        color: #f2f9d5;
+        background: transparent;
+    }
+
+    .enterHere {
+        background: url('../img/dbz.png');
+    }
+
+    #secret_video {
+        height: 720px;
+        width: 1280px;
+        border-radius: 10px;
+    }
+
+    #dbzwar {
+        width: 1280px;
+        height: 451px;
+    }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container1">
+        <div id="secret_video" style="display: none;">
+            <div class="enterHere">
+                <video preload="auto" id="video">
+                    <source src="../img/dbz.mp4" type="video/mp4" >
+                </video>
+            </div>
+        </div>    <!-- jumbtron end -->
+        <div id="dbzpan" class="jumbtron">
+            <div>
+                <h1> enter <br> ↑ ↑ ↓ ↓ ← → ← → b a</h1>
+            </div>
+        </div>    <!-- jumbtron end -->
+    </div>  <!-- container end -->
+
+
+    <div class="container">
+        <div id="dbzwar" class="jumbtron">
+            <img src="../img/dbzwar.jpg">
+        </div>    <!-- jumbtron end -->
+        <div id="dbzpan" class="jumbtron">
+        <div class="row">
+            <div class="col-md-12"><img src="../img/dbz4.jpg"></div>
+        </div>
+        </div>    <!-- jumbtron end -->
+    </div>  <!-- container end -->
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
+</script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js">
+
+    "use strict";
+
+    // $(document).keyup(function(event){
+    //     console.log(event.keyCode);
+    // });
+  
+
+
+
+
+$(document).ready(function(){
+
+    var keys = [];
+
+    var konami = '38,38,40,40,37,39,37,39,66,65';
+ 
+   $(document).keydown(function(e) {
+       
+        keys.push( e.keyCode );
+            
+            if ( keys.toString().indexOf( konami ) >= 0 ){
+
+                // alert("YOU WILL NOW LEVEL UP !")
+                $("#secret_video").show();
+                $('#video')[0].play();
+                var timeoutId = setTimeout(function () {
+                    $("#secret_video").css("display" , "none");
+                }, 12500);
+
+                keys = [];
+            }    
+    });  
+}); 
+</script>
+
+</script>
+</body>
+</html>

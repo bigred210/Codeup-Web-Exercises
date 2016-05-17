@@ -1,5 +1,5 @@
 <?php
-require_once 'functions/functions.php';
+require_once '../Input.php';
 function pageController() 
 {
 
@@ -9,7 +9,7 @@ function pageController()
     //     $count = $_GET['count'];
     // }  **** this is the same as the statement below *****
 
-    $count = inputGet('count');
+    $count = Input::get('count');
     return ['count' => $count];
 
 }
@@ -18,7 +18,7 @@ extract(pageController());
 
 ?>
 
-<!DOCtype html>
+<!DOCTYPE html>
 
 <html>
 

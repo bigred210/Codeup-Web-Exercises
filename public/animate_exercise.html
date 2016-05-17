@@ -13,7 +13,7 @@
         }
 
         #animate-box {
-            background-color: #000033;
+            background-image: url("/img/teach2.png");
             height: 250px;
             margin: 15px;
             position: relative;
@@ -30,7 +30,9 @@
         <button id="btn-all">Animate All</button>
     </p>
 
-    <div id="animate-box"></div>
+    <div id="animate-box">
+       <!--  <img src="/img/ben.png" alt="BEN" /> -->
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
@@ -48,7 +50,7 @@
 
                 $("#btn-scale").click(function() {
                     $("#animate-box").animate({
-                        width: "+=125"
+                        width: "+=250"
                     }, 1000)
                 });
 
@@ -73,12 +75,12 @@
 
                     $("#btn-all").click(function() {
                         $("#animate-box").animate({
-                            width: "+=125",
+                            width: "+=250",
                             left: "+=100"
-                        }, 1000).fadeOut( "slow", function(){
-                        }).fadeIn("slow", function() {
+                        }, 1000).fadeOut( 3000, function(){
+                        }).fadeIn(3000, function() {
                         }).animate({
-                            width: "-=125",
+                            width: "-=250",
                             left: "-=100"
                         })
                     });

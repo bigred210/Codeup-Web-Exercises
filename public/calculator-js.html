@@ -55,12 +55,12 @@
                 <button id="btn1" class="num" data-value= "1">1</button>
                 <button id="btn2" class="num" data-value= "2">2</button>
                 <button id="btn3" class="num" data-value= "3">3</button>
-                <button id="btnPow" class="int" data-value= "^">^</button>
+                <button id="btnDeci" class="int" data-value= ".">.</button>
             </div>
             <div>
                 <button id="btn0" class="num" data-value= "0">0</button>
                 <button id="btnDeci" class="int" data-value= ".">.</button>
-                <button id="btnSqr" class="int" data-value= "√">√</button>
+                <button id="btnPosNeg" class="int" data-value= "+/-">+/-</button>
                 <button id="btnEval" class="int" data-value= "=">=</button>
             </div>
 
@@ -137,25 +137,17 @@
                     case "/":
                         output.value = (parseInt(left_operand.value)) / (parseInt(right_operand.value));
                             break;
-                    case '^':
-                         document.getElementById('btnPow').value = Math.pow(left_operand,right_operand);
-                            break;
-                    case '√':
-                        document.getElementById('btnSqr').value = Math.sqrt(left_operand);
-                            break;
                     }
-
 
                     operator_clicked = false;
             }
 
-               
+            
 
-
-
+                 // equals w/ hidden div function
 
             var equals = document.getElementById("btnEval");
-            equals.addEventListener("click", result);
+            
             equals.addEventListener("click", function() {
                  result();
                  var gif = document.getElementById("matrixGif")
@@ -168,6 +160,7 @@
 
 
 
+                // clear btn function
 
             function clear() {
                 left_operand.value = "";
@@ -183,6 +176,7 @@
 
 
 
+                // bcksp btn function
 
 
             function bckSp() {

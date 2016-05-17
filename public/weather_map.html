@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Weather Map</title>
@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
  <!-- css -->   
     <style type="text/css">
-        
         
         #background {
             position: fixed;
@@ -28,6 +27,13 @@
             height: 400px;
         }
 
+
+        #video {
+            background-size: cover;
+            margin-left: 350px;
+            margin-top: 200px;
+            margin-bottom: 300px;
+        }
 
 
         #city {
@@ -52,57 +58,62 @@
             text-align: center;
             color: #2EFE9A;
             font-size: 20px;
-
         }
-
 
     </style>
 </head>
 <body>
+
     <div class="contatiner">
 
-            <!-- div hidden -->
+
+        <!-- hidden div -->
         <div id="secret_video" style="display: none;" class="jumbtron">
             <video preload="auto" id="video">
-                <source src="../img/dbz.mp4" type="video/mp4" >
+                <source src="../img/ted.mp4" type="video/mp4" >
             </video>
         </div>
-            <!-- video -->
+
+
+        <!-- video -->
         <video autoplay loop muted id="background">
             <source src="/img/mapbgvid.mp4" type="video/mp4">
         </video>
       
-            <!-- div to hold map -->
+
+        <!-- div to hold map -->
         <div id="map-canvas" class="col-md-8 col-md-offset-2"></div>
-        
-            <!-- search box for map -->
+
+
+        <!-- search box for map -->
         <input id="pac-input" class="controls col-md-3 col-md-offset-3" type="text" placeholder="What's the weather like in . . . ?">
 
+
+        <!-- div to hold city -->   
         <div class="row">
-            <!-- div to hold city -->
-                <div id="city" class="col-md-12"></div>
+            <div id="city" class="col-md-12"></div>
         </div> <!-- row end -->
+
 
         <div class="row">
             <!-- div to hold day-1 -->
-                <div id="day-one" class="col-md-4"></div>
+            <div id="day-one" class="col-md-4 day"></div>
 
             <!-- div to hold day-2 -->
-                <div id="day-two" class="col-md-4"></div>
+            <div id="day-two" class="col-md-4 day"></div>
 
             <!-- div to hold day-3 -->
-                <div id="day-three" class="col-md-4"></div>
+            <div id="day-three" class="col-md-4 day"></div>
         </div> <!-- row end -->
 
+
+        <!-- audio clip for mouseEnter -->
+        <audio id="mySoundClip">
+            <source src="/audio/jake.mov"></source>
+        </audio>
+
+
     </div> <!-- container end -->
-
-
-
-
-
-
-
-
 
 <!-- Script to Load the Google Maps API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVA8GE8m5qdHumyaoYLjRG1e0N_qIn3Co&libraries=places"></script>
@@ -112,30 +123,30 @@
 <!-- jQuery Script   -->
 <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
 <script>
-// (function() {
+(function() {
 "use strict";
 
-    // Set our map options
+        // Set our map options
         var mapOptions = {
 
-    // Set the zoom level
+            // Set the zoom level
             zoom: 9,
 
-    // This sets the center of the map at our location
+            // This sets the center of the map at our location
             center: {
                 lat :  29.430581, 
                 lng : -98.488705
             }
         };    
-    // Render the map
+        // Render the map
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-    // Adding trafficLayer
+        // Adding trafficLayer
         var trafficLayer = new google.maps.TrafficLayer();
             trafficLayer.setMap(map);
 
-    // Place a draggable marker on the map
-        var markerWaldo = '/img/teach2.png';
+        // Place a draggable marker on the map
+        var markerTeach = '/img/teach2.png';
         var marker = new google.maps.Marker({
             position: {
                 lat :  29.430581, 
@@ -144,11 +155,11 @@
             map: map,
             draggable:true,
             animation: google.maps.Animation.DROP,
-            icon: markerWaldo,
+            icon: markerTeach,
             title:"Umm? Like yeah totally"
         });
 
-    // Assign to variable
+        // Assign variable
         var $info = function(reqLat, reqLon){
             var $city = $("#city")
             var $day1 = $("#day-one");
@@ -162,18 +173,18 @@
                 lon:    reqLon,
 
                 units: "imperial"
-
             });
 
         
             $jqxhr.done(function(data) {
                 console.log(data)
-    // city ------------------------------
-                var $html = "<p>" + data.city.name + "</p>";
-                $city.html(" ")
-                $city.append($html);
-    // day1 ------------------------------
-                var $html = "<div>"+
+
+                // city ------------------------------
+                var html = "<p>" + data.city.name + "</p>";
+                $city.html(html)
+        //fix html append
+                // day1 ------------------------------
+                var html = "<div>"+
                                 "<h3>" + "Today" + "</3>" +
                                 "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[0].weather[0].icon + '.png">' + "</p>" +
                                 "<p>" + "Temperature:" + " "  + Math.round(data.list[0].temp.min) + " / " + Math.round(data.list[0].temp.max) + " " + "&#8457;" + "</p>" +
@@ -181,8 +192,9 @@
                                 "<p>" + "Humiditiy:" + " "  + data.list[0].humidity + "</p>" +
                             "</div>";
                 $day1.html(" ")
-                $day1.append($html);
-    // day2 ------------------------------
+                $day1.append(html);
+
+                // day2 ------------------------------
                 var $html = "<div>"+
                                 "<h3>" + "Tomorrow" + "</3>" +
                                 "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[1].weather[0].icon + '.png">' + "</p>" +
@@ -192,7 +204,8 @@
                             "</div>";
                 $day2.html(" ")
                 $day2.append($html);
-    // day3 ------------------------------
+
+                // day3 ------------------------------
                 var $html = "<div>"+
                                 "<h3>" + "Day After" + "</3>" +
                                 "<p>" + '<img src="http://openweathermap.org/img/w/'+ data.list[2].weather[0].icon + '.png">' + "</p>" +
@@ -206,6 +219,7 @@
             }); //.done end
         }; 
 
+        // listener for dragend and new weather update
         marker.addListener("dragend", function(){ 
             var position = marker.getPosition();
             var lat = position.lat();
@@ -213,7 +227,7 @@
         $info(lat,lng);
         });
 
-    // search box that will drop new marker update weather by search and not drag
+        // search box that will drop new marker + update weather
         function initAutocomplete() {
 
             var input = document.getElementById('pac-input');
@@ -234,38 +248,47 @@
             });
         } // initAutocomplete End
 
-      initAutocomplete();
+        // call initAuto
+        initAutocomplete();
 
-    $info(29.430581, -98.488705);
-
-    $(document).ready(function(){
-
-        var keys = [];
-
-        var konami = '38,38,40,40,37,39,37,39,66,65';
-     
-       $(document).keydown(function(e) {
-           
-            keys.push( e.keyCode );
-                
-                if ( keys.toString().indexOf( konami ) >= 0 ){
-
-                    // alert("YOU WILL NOW LEVEL UP !")
-                    $("#secret_video").show();
-                    $('#video')[0].play();
-                    var timeoutId = setTimeout(function () {
-                        $("#secret_video").css("display" , "none");
-                    }, 12500);
+        // call info
+        $info(29.430581, -98.488705);
 
 
+        // konami code / hidden div
+        $(document).ready(function(){
 
-                    keys = [];
-                }    
-        });  
-    }); 
+            var keys = [];
+
+            var konami = '38,38,40,40,37,39,37,39,66,65';
+         
+           $(document).keydown(function(e) {
+               
+                keys.push( e.keyCode );
+                    
+                    if ( keys.toString().indexOf( konami ) >= 0 ){
+
+                        // alert("YOU WILL NOW LEVEL UP !")
+                        $("#secret_video").show();
+                        $('#video')[0].play();
+                        var timeoutId = setTimeout(function () {
+                            $("#secret_video").css("display" , "none");
+                        }, 26000);
+
+                        keys = [];
+                    }    
+            });  
+        }); 
 
 
-// })();
+        //___Mouse enter for audio clip on canvas
+        var audio = $("#mySoundClip")[0];
+        $("#map-canvas").mouseenter(function() {
+          audio.play();
+        });
+
+
+})();
 </script>
 </body>
 </html>

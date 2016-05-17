@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hallway</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        #room {
+          /* Set rules to fill background */
+          min-height: 100%;
+          min-width: 1024px;
+            
+          /* Set up proportionate scaling */
+          width: 100%;
+          height: auto;
+            
+          /* Set up positioning */
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1000;
+        }
+
+        #clicker {
+          background: transparent;
+        }
+
+        #lady-hall1 {
+          position: relative;
+          margin-left: 500px;
+          margin-top: 255px;
+        }
+
+        /*#lady-hall2 {
+          position: relative;
+          margin-left: 480px;
+          margin-top: -250px;
+        }*/
+
+
+
+        
+
+        
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <img id="room" src="/img/scary.jpg">
+
+    <div>
+        <button id="clicker" class="btn">HERE</button>
+    </div>
+    <div>
+        <img id="lady-hall1" src="/img/lady1.png" style="display: ;">
+    </div>
+    <!-- <div>
+        <img id="lady-hall2" src="/img/lady2.png" style="display: none;">
+    </div> -->
+   </div>
+   
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        "use strict";
+
+
+            $("#clicker").click(function() {
+                        $("#lady-hall1").show().animate({
+                            left: "+=55",
+                            top: "+=20px"
+                            }, 2000).animate({
+                            left: "-=75",
+                            top: "+=20px"
+                        }, 3000).animate({
+                            left: "+=55",
+                            top: "+=30px"
+                            }, 2000).fadeOut( "fast", function() {
+                        });   
+            });
+
+
+            $("#clicker").click(function() {
+                    $("#lady-hall2").show(5000).animate({
+                        left: "+=55",
+                        top: "+=20px"
+                        }, 2000).animate({
+                        left: "-=75",
+                        top: "+=20px"
+                    }, 3000).animate({
+                        left: "+=55",
+                        top: "+=30px"
+                        }, 2000).fadeOut( "fast", function() {
+                    });      
+            });
+
+
+            
+
+
+
+    });
+</script>
+</body>
+</html>

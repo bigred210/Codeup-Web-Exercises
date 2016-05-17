@@ -1,3 +1,7 @@
+<?php
+
+?>
+<!DOCtype html>
 <html>
 <head>
 	<title>Codeup.dev</title>

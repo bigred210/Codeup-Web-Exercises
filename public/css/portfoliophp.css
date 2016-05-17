@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Bilbo+Swash+Caps);
+.jumbotron {
+    text-align: center;
+    font-family: Bilbo Swash Caps;
+}
+.projects {
+    background-color: #333;
+    border: none;
+}
+p {
+    color: white;
+}
+h3 {
+    color: white;
+}

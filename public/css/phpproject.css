@@ -1,0 +1,74 @@
+@import url(https://fonts.googleapis.com/css?family=Bilbo+Swash+Caps);
+
+/* NAVBAR */
+
+.navbar {
+    background: transparent;
+    border-style: none;
+}
+
+.img-circle {
+    width: 90px;
+    height: 8s0px;
+}
+
+
+/* HOME */
+
+video {
+    position: fixed;
+    z-index: -1000;
+    top: 0px ;
+    left: 0px ;
+    overflow: hidden;
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.main {
+    margin-top: 200px;
+}
+
+.name {
+    text-align: center;
+    color: #FFFAF0;
+    font-size: 58px;
+    padding-right: 330px;
+    font-family: Bilbo Swash Caps;
+}
+
+.motto {
+    text-align: center;
+    font-size: 85px;
+    color: #FFFAF0;
+    margin-top: 5px;
+    font-family: Bilbo Swash Caps;
+}
+
+.title { 
+    text-align: center;
+    font-size: 30px;
+    color: #FFFAF0;
+    font-family: Bilbo Swash Caps;
+}
+
+.btn {
+    background: transparent;
+    border-style: none;
+}
+
+.page-header {
+    border-style: none;
+}
+
+.information {
+    position: relative;
+}
+
+.myworks {
+    position: relative;
+}
+
+

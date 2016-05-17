@@ -14,15 +14,15 @@
             "PS4",
             "Used"
         ],
-        "price": 16
+        "price": 18
     }, {
         "title": "Splatoon",
-        "quantity": 200,
+        "quantity": 20,
         "categories": [
             "Wii-U",
             "Used"
         ],
-        "price": 15
+        "price": 13
     }, {
         "title": "Rampage",
         "quantity": 1,

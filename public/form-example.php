@@ -11,7 +11,7 @@
     <h1>List of Items</h1>
     <ul>
     <?php foreach ($allItems as $item): ?>
-        <li>exercise <caption> </caption><?php echo htmlspecialchars(strip_tags($item)); ?></li>
+        <li><?php echo htmlspecialchars(strip_tags($item)); ?></li>
     <?php endforeach; ?>
     </ul>
     <form method="POST" action="/form-example.php">
