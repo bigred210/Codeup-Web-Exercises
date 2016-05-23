@@ -9,16 +9,16 @@ $dbc->exec($truncate);
 
       // array of $parks
 $parks = [
-    ['name' => 'Acadia', 'location' => 'MAINE 44.35N 68.21W', 'date_established' => 'February 26, 1919' , 'area_in_acres' => 47389.67, 'description' => 'THIS PLACE IS HOT'],
-    ['name' => 'American Samoa', 'location' => 'American Samoa 14.25S 170.68W', 'date_established' => 'October 31, 1998' , 'area_in_acres' =>9000.00, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Arches', 'location' => 'UTAH 38.68N 109.57W', 'date_established' => 'April 12, 1929' , 'area_in_acres' => 76518.98, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Badlands',  'location' => 'SOUTH DAKOTA 43.75N 102.50W', 'date_established' => 'November 10, 1978', 'area_in_acres' => 242755.94, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Big Bend',  'location' => 'TEXAS 29.25N 103.25W', 'date_established' => 'June 12, 1944', 'area_in_acres' => 801163.21, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Biscayne',  'location' => 'Florida 25.65N 80.08W', 'date_established' => 'June 28, 1980','area_in_acres' => 172924.07, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Black Canyon of the Gunnison', 'location' => 'Colorado 38.57N 107.72W', 'date_established' => 'October 21, 1999' , 'area_in_acres' => 32950.03, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Bryce Canyon', 'location' => 'UTAH 37.57N 112.18W','date_established' => 'February 25, 1928' , 'area_in_acres' => 35835.08, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Canyonlands',  'location' => 'UTAH 38.2N 109.93W',   'date_established' => 'September 12, 1964' ,'area_in_acres' => 337597.83, 'description' => 'THIS PLACE IS HOT!'],
-    ['name' => 'Capitol Reef', 'location' => 'Utah 38.20N 111.17W', 'date_established' => 'December 18, 1971' , 'area_in_acres' => 241904.26, 'description' => 'THIS PLACE IS HOT!']
+    ['name' => 'Acadia', 'location' => 'MAINE 44.35N 68.21W', 'date_established' => 'February 26, 1919' , 'area_in_acres' => 47389.67, 'description' => 'https://en.wikipedia.org/wiki/Acadia_National_Park'],
+    ['name' => 'American Samoa', 'location' => 'American Samoa 14.25S 170.68W', 'date_established' => 'October 31, 1998' , 'area_in_acres' =>9000.00, 'description' => 'https://en.wikipedia.org/wiki/National_Park_of_American_Samoa'],
+    ['name' => 'Arches', 'location' => 'UTAH 38.68N 109.57W', 'date_established' => 'April 12, 1929' , 'area_in_acres' => 76518.98, 'description' => 'https://en.wikipedia.org/wiki/Arches_National_Park'],
+    ['name' => 'Badlands',  'location' => 'SOUTH DAKOTA 43.75N 102.50W', 'date_established' => 'November 10, 1978', 'area_in_acres' => 242755.94, 'description' => 'https://en.wikipedia.org/wiki/Badlands_National_Park'],
+    ['name' => 'Big Bend',  'location' => 'TEXAS 29.25N 103.25W', 'date_established' => 'June 12, 1944', 'area_in_acres' => 801163.21, 'description' => 'https://en.wikipedia.org/wiki/Big_Bend_National_Park'],
+    ['name' => 'Biscayne',  'location' => 'Florida 25.65N 80.08W', 'date_established' => 'June 28, 1980','area_in_acres' => 172924.07, 'description' => 'https://en.wikipedia.org/wiki/Biscayne_National_Park'],
+    ['name' => 'Black Canyon of the Gunnison', 'location' => 'Colorado 38.57N 107.72W', 'date_established' => 'October 21, 1999' , 'area_in_acres' => 32950.03, 'description' => 'https://en.wikipedia.org/wiki/Black_Canyon_of_the_Gunnison_National_Park'],
+    ['name' => 'Bryce Canyon', 'location' => 'UTAH 37.57N 112.18W','date_established' => 'February 25, 1928' , 'area_in_acres' => 35835.08, 'description' => 'https://en.wikipedia.org/wiki/Bryce_Canyon_National_Park'],
+    ['name' => 'Canyonlands',  'location' => 'UTAH 38.2N 109.93W',   'date_established' => 'September 12, 1964' ,'area_in_acres' => 337597.83, 'description' => 'https://en.wikipedia.org/wiki/Canyonlands_National_Park'],
+    ['name' => 'Capitol Reef', 'location' => 'Utah 38.20N 111.17W', 'date_established' => 'December 18, 1971' , 'area_in_acres' => 241904.26, 'description' => 'https://en.wikipedia.org/wiki/Capitol_Reef_National_Park']
 ];
 
 $stmt = $dbc->prepare("INSERT INTO national_parks (name,location,date_established,area_in_acres,description) VALUES (:name, :location, :date_established, :area_in_acres, :description)");

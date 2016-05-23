@@ -7,22 +7,104 @@ require_once '../db_connect.php';
 
 function pageController($dbc) 
 {
+    $message = [];
+    $name = '';
+    $location = '';
+    $dateEst = '';
+    $acres = '';
+    $description = '';
     $data = [];
     $data['page'] = Input::has('page') ? Input::get('page') : 1;
     $offset = ($data['page']-1)*4;
     $stmt = $dbc->prepare('SELECT * FROM national_parks LIMIT 4 OFFSET ' . $offset );
     $stmt->execute();
     $data['parks'] = $stmt->fetchALL(PDO::FETCH_ASSOC);
-    
-    if ($_POST)
+
+    if (!empty($_POST))
     {
-    $query = "INSERT INTO national_parks (name,location,date_established,area_in_acres,description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
-    $stmt = $dbc->prepare($query);
-    $stmt->execute(array(':name' => Input::get('name'), ':location' => Input::get('location'), ':date_established' => Input::get('date_established'), ':area_in_acres' => Input::get('area_in_acres'), ':description' => Input::get('description')));
-    }
+
+        try {
+            $name = Input::getString('name',1,150);
+        }
+        catch (InvalidArgumentException $e) {
+                $message[] = $e->getMessage();
+        }catch (OutOfRangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (RangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (LengthException $e) {
+                $message[] = $e->getMessage();
+        }
+
+        try {
+            $location = Input::getString('location',0,150);
+        }
+        catch (InvalidArgumentException $e) {
+                $message[] = $e->getMessage();
+        }catch (OutOfRangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (RangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (LengthException $e) {
+                $message[] = $e->getMessage();
+        }
+
+        try {
+            $dateEst = Input::getString('date_established',0,150);
+        }
+        catch (InvalidArgumentException $e) {
+                $message[] = $e->getMessage();
+        }catch (OutOfRangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (RangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (LengthException $e) {
+                $message[] = $e->getMessage();
+        }
+
+        try {
+            $acres  = Input::getNumber('area_in_acres',0,150);
+        }
+        catch (InvalidArgumentException $e) {
+                $message[] = $e->getMessage();
+        }catch (OutOfRangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (RangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (LengthException $e) {
+                $message[] = $e->getMessage();
+        }
+
+        try {
+            $description = Input::getString('description',10,150);
+        }
+        catch (InvalidArgumentException $e) {
+                $message[] = $e->getMessage();
+        }catch (OutOfRangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (RangeException $e) {
+                $message[] = $e->getMessage();
+        }catch (LengthException $e) {
+                $message[] = $e->getMessage();
+        }
+            if(empty($message)){
+            $query = "INSERT INTO national_parks (name,location,date_established,area_in_acres,description) VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+            $stmt = $dbc->prepare($query);
+            $stmt->execute(array(':name' => $name, ':location' => $location, ':date_established' => $dateEst, ':area_in_acres' => $acres, ':description' => $description));
+            }
+        } 
+
+
+
+    $data['message'] = $message;
     return $data;
 }
 extract(pageController($dbc));
+
+    function getPost($field) 
+    {
+       return (isset($_POST[$field]) && $_POST[$field] != "" ? $_POST[$field] : "");
+    }
 
 ?>
 <!DOCTYPE html>
@@ -37,18 +119,25 @@ extract(pageController($dbc));
     <link rel="stylesheet" href="css/parks.css">
 </head>
 <body>
+        <!-- Creating an if statement that will loop through the errors and display a User friendly error message -->
+    <?php if(!empty($message)): ?>
+        <?php foreach ($message as $error): ?>
+                 <p> <?= $error ?> </p>
+        <?php endforeach; ?>
+    <?php endif?> 
     <div class="jumbotron">
         <h1>National Parks</h1>
     </div> <!-- jumbotron end -->
     <div class="container">
         <div class="info row">
+                    <!-- Creating a loop that will inject the PHP code into my HTML -->
                 <?php foreach ($parks as $park): ?>
                     <div class="col-xs-3" "col-sm-3" "col-md-3">
                     <h3><?= escape($park['name']) ?></h3>
                     <p>Location: <br> <?= escape($park['location']) ?></p>
                     <p>Established: <br> <?= escape($park['date_established']) ?></p>
                     <p>Acres: <br> <?= escape($park['area_in_acres']) ?></p>
-                    <p>Description: <br> <?= escape($park['description']) ?></p>
+                    <p>Description: <br> <a href = "<?= escape($park['description']) ?>"target="_blank">Park Info Page</a></p>
                     </div> <!-- col end -->
                 <?php endforeach; ?> 
         </div><!-- row ends --> 
@@ -74,11 +163,11 @@ extract(pageController($dbc));
         <div class="col-xs-12" "col-sm-12" "col-md-12">
             <h1>Add a National Park</h1>
             <form method="POST" action="#">
-                <input type="text" id="newpark" name="name" placeholder="Name">
-                <input type="text" id="newpark" name="location" placeholder="Location">
-                <input type="text" id="newpark" name="date_established" placeholder="Year Established">
-                <input type="number" id="newpark" name="area_in_acres" placeholder="Area in acres">
-                <input type="text" id="newpark" name="description" placeholder="Description">
+                <input type="text" id="newpark" value = "<?= getPost('name');?>"name="name" placeholder="Name">
+                <input type="text" id="newpark" value = "<?= getPost('location');?>" name="location" placeholder="Location">
+                <input type="text" id="newpark" value = "<?= getPost('date_established');?>" name="date_established" placeholder="Year Established">
+                <input type="number" id="newpark" value = "<?= getPost('area_in_acres');?>" name="area_in_acres" placeholder="Area in acres">
+                <input type="text" id="newpark" value = "<?= getPost('description');?>" name="description" placeholder="Description">
                 <input type="submit" value="add">
             </form><!-- form ends -->
         </div><!-- col ends -->

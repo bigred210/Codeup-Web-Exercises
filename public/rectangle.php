@@ -12,22 +12,22 @@ class Rectangle
         $this->setHeight($height);
     }
 
-    public function setHeight($height)
+    protected function setHeight($height)
     {
         $this->height = trim($height);
     }
 
-    public function setLength($length)
+    protected function setLength($length)
     {
         $this->length = trim($length);
     }
 
-    public function getHeight()
+    protected function getHeight()
     {
         return $this->height;
     }
 
-    public function getLength()
+    protected function getLength()
     {
         return $this->length;
     }

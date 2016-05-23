@@ -8,15 +8,18 @@ class Log
     public function __construct($prefix = 'log') 
     {
         $currentLog = date('Y-m-d');
-        $this->setFilename("$prefix-$currentLog.log");  
-        $this->setHandle(fopen($this->filename, 'a'));
+        $this->setFilename("$prefix-$currentLog.log");
+
+        if (touch($this->$filename) && is_writable($this->$filename)) {
+            $this->setHandle(fopen($this->filename, 'a'));  
+        }    
     } 
-    public function setFilename($filename)
+    private function setFilename($filename)
     {
-        if (is_string($filename))
-        {
-          $this->filename = trim($filename);
+        if (is_string($filename)) {
+   
         }
+        $this->filename = trim($filename);
     }
     public function logInfo($message)
     {
@@ -34,7 +37,6 @@ class Log
     {
         fclose($this->handle);
     }
-
 }
 
 
